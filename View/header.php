@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,12 +22,13 @@
     <link rel="stylesheet" href="View/assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="View/assets/css/lightbox.css">
-   
+    <link rel="stylesheet" href="View/assets/css/pay.css">
+
     <script src="https://kit.fontawesome.com/e6c8e2293e.js" crossorigin="anonymous"></script>
-    </head>
-    
+</head>
+
 <body>
-    
+
 
     <header class="header-area header-sticky">
         <div class="container">
@@ -55,15 +56,27 @@
                                 <ul>
                                     <li><a href="index.php?act=gioithieu">Về Chúng Tôi</a></li>
                                     <li><a href="#">Sản phẩm</a></li>
-                                    <li><a href="index.php?act=lienhe">Liên Hệ Chúng Tôi</a></li>
+                                    <li  ><a href="index.php?act=lienhe">Liên Hệ Chúng Tôi</a></li>
                                 </ul>
                             </li>
                             <!-- <li class="scroll-to-section"><a href="#explore">Khám Phá</a></li> -->
                             <li><a href="#"><input type="text" class="seach"></a></li>
                             <li><a href="#" type="seach"><i class="fa-brands fa-searchengin"></i></a></li>
                             <li><a href="index.php?act=giohang"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                            <li><a href="View/taikhoan/taikhoan.php"><i class="fa-solid fa-user"></i></a></li>
-                        </ul>        
+                            <?php
+                            if (isset($_SESSION['taikhoan'])) {
+                                extract($_SESSION['taikhoan']);
+                             echo'<li style="line-height: 40px;">'.$user.'
+                             <ul><li><a href="index.php?act=logout">Thoát</a></li></ul>
+                             
+                             </li>';
+                                   
+
+                            }else{
+                                echo'<li><a href="index.php?act=dangnhap"><i class="fa-solid fa-user"></i></a></li>';
+                            }
+                            ?>
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -72,21 +85,3 @@
             </div>
         </div>
     </header>
-    <div class="slide-show">
-        <img class="slide current-slide" src="View/img/slide_1_img.webp" alt="Image 1">
-        <img class="slide" src="View/img/slide_4_img.jpg" alt="Image 2">
-    </div>
-    <script>
-        let currentSlideIndex = 0;
-        let slides = document.getElementsByClassName('slide');
-
-    setInterval(function () {
-    slides[currentSlideIndex].classList.remove('current-slide');
-    currentSlideIndex++;
-    if (currentSlideIndex == slides.length) {
-        currentSlideIndex = 0;
-    }
-    slides[currentSlideIndex].classList.add('current-slide');
-    }, 3000); 
-
-    </script>

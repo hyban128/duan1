@@ -1803,6 +1803,7 @@ Single Product Page
 }
 
 .quantity-content {
+  display: flex;
   margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid #eee;
@@ -1815,7 +1816,7 @@ Single Product Page
   padding-top: 100px;
 }
 .quantity-content .left-content {
-  float: left;
+  /* float: left; */
   margin-right: 30px;
 }
 
@@ -1853,6 +1854,7 @@ tbody .name-pr a:hover{
   border-radius: 10px;
   
 }
+
 .quantity-content .right-content {
   text-align: right;
 }
@@ -1864,13 +1866,17 @@ tbody .name-pr a:hover{
   position: relative;
   z-index: 11;
 }
-input[type="radio"] {
-  display: none; 
+option{
+  text-align: center;
 }
+/* input[type="radio"] {
+  display: none; 
+} */
 input[type="radio"] + label {
   display: inline-block;
   padding: 4px 12px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  /* border: 1px solid #ccc; */
 }
 #Size{
   width: 60px;
@@ -1902,8 +1908,7 @@ input[type="radio"]:checked + label {
   background-color: #2a2a2a;
 }
 
-.quantity {
-  display: inline-block; }
+
  
  .quantity .input-text.qty {
   width: 35px;

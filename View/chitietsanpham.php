@@ -24,15 +24,16 @@
                     </div>
                     <div class="quantity-content">
                         <div class="left-content">
-                            <h6>Chọn Màu</h6>
+                            <h6 style="padding-top: 0;">Chọn Màu</h6>
                         </div>
                         <div class="right-content">
-                            <div class="select-color">
-                                <input type="radio" id="white" name="color" value="white">
-                                <label for="white">Màu Trắng</label>
-                                
-                                <input type="radio" id="black" name="color" value="black"> 
-                                <label for="black">Màu Đen</label>                            </div>
+                           
+
+                  <select name="color" id="" class="form-select" aria-label="Default select example">
+                               <option value="" >Đen</option>
+                                <option value="">Trắng</option>
+                  
+                </select>
                         </div>
                     </div>
                     <div class="quantity-content">
@@ -44,23 +45,23 @@
                                 <option value="" >S</option>
                                 <option value="">M</option>
                                 <option value="">L</option>
-                                <option value="">XL</option>
                             </select>
                         </div>
                     </div>
                     <div class="quantity-content">
                         <div class="left-content">
-                            <h6>Số Lượng</h6>
+                            <h6 style="padding-top: 0;">Số Lượng</h6>
                         </div>
                         <div class="right-content">
                             <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-                            </div>
+                           
+                             <input style="text-align: center;" type="number" value="1" id="quantity" name="quantity" min="1" max="5">
+                                         </div>
                         </div>
                     </div>
                     <div class="total">
-                        <h4>Thành Tiền:</h4>
-                        <div class="main-border-button"><a href="#">Thêm Vào Giỏ Hàng</a></div>
+                        <!-- <h4>Thành Tiền:450000d</h4> -->
+                        <div class="main-border-button"><a href="index.php?act=giohang">Thêm Vào Giỏ Hàng</a></div>
                     </div>
                 </div>
             </div>

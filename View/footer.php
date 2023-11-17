@@ -89,7 +89,19 @@
                 
             });
         });
+      
+        let currentSlideIndex = 0;
+        let slides = document.getElementsByClassName('slide');
 
+        setInterval(function() {
+            slides[currentSlideIndex].classList.remove('current-slide');
+            currentSlideIndex++;
+            if (currentSlideIndex == slides.length) {
+                currentSlideIndex = 0;
+            }
+            slides[currentSlideIndex].classList.add('current-slide');
+        }, 3000);
+    
     </script>
 
 </body>

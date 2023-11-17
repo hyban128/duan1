@@ -23,4 +23,9 @@ function loadOne_tk($id){/* Lay ra 1 ban ghi tu 1 id*/
     header("location:".$_SERVER['HTTP_REFERER']);
   
   }
+  function check_user($email,$pass){
+    $sql="SELECT * from taikhoan where email='$email' and pass='$pass'";
+    $sp=pdo_query_one($sql);
+    return $sp;
+ }
 ?>

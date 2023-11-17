@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-main table-responsive">
-                        <table class="table">
+                        <table class="table" >
                             <thead>
                                 <tr>
                                     <th>Ảnh</th>
@@ -32,7 +32,7 @@
                                 <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-                                            <img class="img-fluid" src="View/img/aopolo.webp" alt="" />
+                                            <img style="width: 50px;" class="img-fluid" src="View/img/aopolo.webp" alt="" />
                                         </a>
                                     </td>
                                     <td class="name-pr">
@@ -43,7 +43,11 @@
                                     <td class="price-pr">
                                         <p>450.000 <u>đ</u></p>
                                     </td>
-                                    <td class="quantity buttons_added"><input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus"></td>
+                                    <td>
+                                    <input style="text-align: center;    background-color: #f0e7da;border: none;" type="number" value="1" id="quantity" name="quantity" min="1" max="5">
+
+                                    </td>
+
                                     <td class="total-pr">
                                         <p>450.000 <u>đ</u></p>
                                     </td>
@@ -52,34 +56,31 @@
                                             <i class="fas fa-times"></i>
                                         </a>
                                     </td>
+                                 
                                 </tr>
+                                <tr>
+                                        <td style="background-color: #ccc;" colspan="4">Tổng tiền</td>
+                                        <td style="font-weight: 800;background-color:#ccc" class="total-pr">
+                                            <p>450.000 <u>đ</u></p>
+                                        </td>
+                                     <td style="background-color: #ccc;">
+                                     <a  href="index.php?act=bill"><input style="    background: blue; border: none;padding: 0 5px;   color: orange; font-weight: 800;" value="Thanh Toán" type="submit"></a> 
+
+                                     </td>
+                        
+                                    </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="row my-5">
-                <div class="col-lg-8 col-sm-12"></div>
-                <div class="col-lg-4 col-sm-12">
-                    <div class="order-box">
-                        <h3>Hóa Đơn</h3>
-                        <div class="d-flex gr-total">
-                            <h5>Tổng Tiền</h5>
-                            <div class="ml-auto h5">499.000 <u>đ</u></div>
-                        </div>
-                        <div class="button">
-                            <input class="button-submit" value="Thanh Toán" type="submit">
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
+           
             <section class="section" id="men">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="section-heading">
-                                <h2>Có thể bạn cũng thích</h2>
+                                <h6 style="float: left;">Có thể bạn cũng thích</h6>
                             </div>
                         </div>
                     </div>
@@ -102,13 +103,7 @@
                                         <div class="down-content">
                                             <h4>Áo Polo 14ATP004</h4>
                                             <span>450.000 <u>đ</u></span>
-                                            <ul class="stars">
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
+                                          
                                         </div>
                                     </div>
 

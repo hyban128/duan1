@@ -1,3 +1,8 @@
+<div class="slide-show">
+        <img class="slide current-slide" src="View/img/slide_1_img.webp" alt="Image 1">
+        <img class="slide" src="View/img/slide_4_img.jpg" alt="Image 2">
+    </div>
+    
 <section class="section" id="men">
         <div class="container">
             <div class="row">
