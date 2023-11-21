@@ -22,55 +22,74 @@
                                 <tr>
                                     <th>Ảnh</th>
                                     <th>Tên Sản Phẩm</th>
-                                    <th>Giá Tiền Sản Ph</th>
-                                    <th>Số Lượng Sản Phẩm</th>
+                                    <th>Giá Tiền</th>
+                                    <th>Số Lượng </th>
+                                    <th>Size</th>
+                                    <th>Color</th>
                                     <th>Tổng Tiền</th>
                                     <th>Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <?php
+                                $tong=0;
+                                $i=0; /*Xoa theo vi tri */
+                                foreach ($_SESSION['cart'] as $cart){
+                                           
+                                        //    $tongtien=$cart[3]*$cart[4];
+                                            $tong+=$cart[3]*$cart[4];
+                                            
+                               echo'  <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-                                            <img style="width: 50px;" class="img-fluid" src="View/img/aopolo.webp" alt="" />
+                                            <img style="width: 50px;" class="img-fluid" src="upload/'.$cart['2'].'" alt="" />
                                         </a>
                                     </td>
                                     <td class="name-pr">
-                                        <a href="single-product.html">
-                                            Áo polo 14ATP004
-                                        </a>
+                                        '.$cart[1].'
                                     </td>
                                     <td class="price-pr">
-                                        <p>450.000 <u>đ</u></p>
+                                        <p>'.$cart['3'].'</p>
                                     </td>
                                     <td>
-                                    <input style="text-align: center;    background-color: #f0e7da;border: none;" type="number" value="1" id="quantity" name="quantity" min="1" max="5">
-
+                                    '.$cart['4'].'
                                     </td>
-
+                                    <td>
+                                    <p>'.($cart['6']==3?'M':'S').'</p>
+                                  </td>
+                                  <td>
+                                    <p>'.($cart['5']==3?'Trang':'Den').'</p>
+                                  </td>
                                     <td class="total-pr">
-                                        <p>450.000 <u>đ</u></p>
+                                        <p>'.$cart['4']*$cart['3'].'</p>
                                     </td>
+                                  
                                     <td class="remove-pr">
-                                        <a href="#">
-                                            <i class="fas fa-times"></i>
+                                        <a href="index.php?act=deletecart&idcart='.$i.'">
+                                            <i class="fas fa-times"><input type="button"></i>
                                         </a>
                                     </td>
-                                 
+                                  
                                 </tr>
-                                <tr>
-                                        <td style="background-color: #ccc;" colspan="4">Tổng tiền</td>
+                                <tr>';
+                                $i+=1;
+                            }
+                                       echo' <td style="background-color: #ccc;" colspan="6">Tổng tiền</td>
                                         <td style="font-weight: 800;background-color:#ccc" class="total-pr">
-                                            <p>450.000 <u>đ</u></p>
+                                            <p>'.$tong.'</p>
                                         </td>
+                                    
                                      <td style="background-color: #ccc;">
-                                     <a  href="index.php?act=bill"><input style="    background: blue; border: none;padding: 0 5px;   color: orange; font-weight: 800;" value="Thanh Toán" type="submit"></a> 
+                                     <a  href="index.php?act=bill"><input style="background: blue; border: none;padding: 0 5px;   color: orange; font-weight: 800;" value="Thanh Toán" type="submit"></a> 
 
                                      </td>
                         
-                                    </tr>
+                                    </tr>';
+                                    ?>
+
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>

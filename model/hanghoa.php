@@ -17,6 +17,21 @@ function loadAll_sanpham($kyw="",$iddm=0){ /*Danh sach*/
      $sanpham=pdo_query($sql);
      return $sanpham;
  }
+ function load_tendm($iddm){/* Lay ra ten danh muc sanpham_danhmuc*/
+    if($iddm>0){
+    $sql="SELECT * from danhmuc where id_dm='$iddm'";
+    $dm=pdo_query_one($sql);
+    extract($dm);
+    return $name;
+    }else{
+        return "";
+    }
+ }
+ function loadAll_view(){ /*nguoi dung*/
+    $sql="SELECT *from sanpham where 1 order by id_pro desc limit 0,9";
+     $sanpham=pdo_query($sql);
+     return $sanpham;
+ }
  function   delete_hanghoa($id){
     $sanpham=loadOne_sanpham($id);
     if($sanpham['img']!=null && $sanpham['img']!=""){
@@ -31,6 +46,12 @@ function loadAll_sanpham($kyw="",$iddm=0){ /*Danh sach*/
     $sp=pdo_query_one($sql);
     return $sp;
  }
+ function luotxem($id){
+    $sanpham=loadOne_sanpham($id);
+    $luotxem=$sanpham['luotxem']+1;
+    $sql="UPDATE sanpham set luotxem='$luotxem' where id_pro='$id'";
+    pdo_execute($sql);
+}
  function update_hanghoa($id,$iddm,$tensp,$giasp,$motasp,$image){
          
         if($image!=null){

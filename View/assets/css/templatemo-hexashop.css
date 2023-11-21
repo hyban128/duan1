@@ -756,15 +756,6 @@ banner
   padding: 0px 20px;
   margin-bottom: 20px;
 }
-
-
-
-/*
----------------------------------------------
-Men
----------------------------------------------
-*/
-
 #men {
   padding-top: 50px;
   padding-bottom: 90px;
@@ -918,14 +909,6 @@ Men
   line-height: 48px;
   border :1px solid #2a2a2a;
 }
-
-
-/*
----------------------------------------------
-Women
----------------------------------------------
-*/
-
 #women {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -1079,13 +1062,6 @@ Women
   line-height: 48px;
   border :1px solid #2a2a2a;
 }
-
-/*
----------------------------------------------
-Kids
----------------------------------------------
-*/
-
 #kids {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -1239,14 +1215,6 @@ Kids
   line-height: 48px;
   border :1px solid #2a2a2a;
 }
-
-
-/*
----------------------------------------------
-Explore
----------------------------------------------
-*/
-
 #explore {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -1344,13 +1312,6 @@ Explore
   color: #aaa;
   font-weight: 500;
 }
-
-/* 
----------------------------------------------
-Social
---------------------------------------------- 
-*/
-
 #social {
   margin-top: 90px;
   padding-bottom: 90px;
@@ -1411,13 +1372,6 @@ Social
   overflow: hidden;
 }
 
-
-/* 
----------------------------------------------
-Subscribe
---------------------------------------------- 
-*/
-
 .subscribe {
   margin-top: 90px;
 }
@@ -1467,7 +1421,16 @@ Subscribe
   border: 1px solid #2a2a2a;
   color: #2a2a2a;
 }
-
+.filter button{
+  background-color: #c66;
+  color: #fff;
+  width: 180px;
+  height: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
 .subscribe ul li {
   margin-bottom: 30px;
   display: block;
@@ -1489,7 +1452,105 @@ Subscribe
 .subscribe ul li span a:hover {
   color: #2a2a2a;
 }
+.comment-product{
+  width: 90%;
+  min-height: 50vh;
+  padding-top:30px;
+  margin-left: 100px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.rate {
+  margin-left:25%;
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+#review{
+  width: 100%;
+  border-radius: 10px;
+}
+#review:focus{
+  background-color: #cff;
+}
+.btn-cmt{
+  width: 100%;
+  height: 45px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+.btn-cmt:hover{
+  text-decoration: underline;
+}
+.comments{
+  position: relative;
+  min-height: 50vh;
+  width: 100%;
+  padding: 20px 100px;
+}
+.comments h2{
+  text-align: center;
+}
+.comment-details h4{
+  padding: 10px;
+}
+.comment-details p{
+  padding: 10px;
+  font-size: 15px;
+}
+.comment-user{
+  margin: 30px 0;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
+.comment-details {
+  display: flex;
+  align-items: center;
+}
+.comment-details ul.stars li{
+  display: inline;
+  color: gold;
+}
 
 /* 
 ---------------------------------------------
@@ -1758,11 +1819,7 @@ Single Product Page
   padding-bottom: 20px;
 }
 
-#product .right-content ul.stars {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
+
 
 #product .right-content ul.stars li {
   display: inline;
@@ -1803,7 +1860,6 @@ Single Product Page
 }
 
 .quantity-content {
-  display: flex;
   margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid #eee;
@@ -1816,7 +1872,7 @@ Single Product Page
   padding-top: 100px;
 }
 .quantity-content .left-content {
-  /* float: left; */
+  float: left;
   margin-right: 30px;
 }
 
@@ -1841,20 +1897,25 @@ tbody .name-pr a:hover{
   font-weight: bolder;
   text-transform: uppercase;
 }
-.button{
+.button-submit{
   margin: 0;
   margin-top: 20px;
-}
-.button-submit{
   background-color: orangered;
-  color: white;
-  width: 150px;
-  height: 80px;
+  width: 100px;
+  height: 60px;
   font-size: 20px;
   border-radius: 10px;
-  
+  text-align: center;
+  border: none;
 }
-
+.button-submit a{
+  text-decoration: none;
+  color: #fff;
+}
+.button-submit a:hover{
+  color:#ccc;
+  text-decoration: underline;
+}
 .quantity-content .right-content {
   text-align: right;
 }
@@ -1866,26 +1927,22 @@ tbody .name-pr a:hover{
   position: relative;
   z-index: 11;
 }
-option{
-  text-align: center;
-}
-/* input[type="radio"] {
+.select-color input[type="radio"] {
   display: none; 
-} */
-input[type="radio"] + label {
+}
+.select-color input[type="radio"] + label {
   display: inline-block;
   padding: 4px 12px;
-  border-radius: 10px;
-  /* border: 1px solid #ccc; */
+  border: 1px solid #ccc;
 }
 #Size{
   width: 60px;
   margin-top: 5px;
   border-radius: 5px;
 }
-input[type="radio"]:checked + label {
+/* .select-color input[type="radio"]:checked + label {
   background-color: #ddd;
-}
+} */
 
 .total h4 {
   float: left;
@@ -1908,7 +1965,8 @@ input[type="radio"]:checked + label {
   background-color: #2a2a2a;
 }
 
-
+.quantity {
+  display: inline-block; }
  
  .quantity .input-text.qty {
   width: 35px;
@@ -1978,7 +2036,7 @@ About Us Page
 }
 
 .about-us {
-  margin-top: 80px;
+  margin-top: 140px;
 }
 
 .about-us .left-image img {

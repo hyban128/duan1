@@ -161,7 +161,7 @@
 
 .sign-in{
     left: 0;
-    width: 50%;
+    width: 100%;
     z-index: 2;
 }
 
@@ -283,3 +283,156 @@
     justify-content: center;
     flex-direction: column;
     height: 100vh;}
+
+    /*binhluan*/
+    .comment-product{
+        width: 90%;
+        min-height: 50vh;
+        padding-top:30px;
+        margin-left: 100px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .rate {
+        margin-left:25%;
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+      }
+      .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+      }
+      .rate:not(:checked) > label {
+        float:right;
+        width:34px;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:30px;
+        color:#ccc;
+      }
+      .rate:not(:checked) > label:before {
+        content: '★ ';
+      }
+      .rate > input:checked ~ label {
+        color: #ffc700;    
+      }
+      .rate:not(:checked) > label:hover,
+      .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;  
+      }
+      .rate > input:checked + label:hover,
+      .rate > input:checked + label:hover ~ label,
+      .rate > input:checked ~ label:hover,
+      .rate > input:checked ~ label:hover ~ label,
+      .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+      }
+      #review{
+        width: 100%;
+        border-radius: 10px;
+      }
+      #review:focus{
+        background-color: #cff;
+      }
+      .btn-cmt{
+        width: 100%;
+        height: 45px;
+        border-radius: 40px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .btn-cmt:hover{
+        text-decoration: underline;
+      }
+      .comments{
+        position: relative;
+        min-height: 50vh;
+        width: 100%;
+        padding: 20px 100px;
+      }
+      .comments h2{
+        text-align: center;
+      }
+      .comment-details h4{
+        padding: 10px;
+      }
+      .comment-details p{
+        padding: 10px;
+        font-size: 15px;
+      }
+      .comment-user{
+        margin: 30px 0;
+      }
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .comment-details {
+        display: flex;
+        align-items: center;
+      }
+      .comment-details ul.stars li{
+        display: inline;
+        color: gold;
+      }
+      #men .item .down-content ul.stars {
+        position: absolute;
+        right: 0;
+        top: 30px;
+      }
+      
+      #men .item .down-content ul.stars li {
+        display: inline;
+        font-size: 13px;
+      }
+      
+    .pay-complete{
+        width: 90%;
+        border: 1px solid gray;
+        padding: 50px;
+    }
+    .pay-complete h1{
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .button-complete{
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px inset gray;
+    }
+    .button-complete a{
+        color: #000;
+    }
+    .button-complete:hover{
+        text-decoration: underline;
+    }
+    .button-home{
+        background-color: tomato;
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    .button-home:hover{
+        text-decoration: underline;
+        color: #fff;
+    }
+    .button-home a {
+        font-size: 15px;
+        color: #fff;
+        font-weight: 600;
+    }
+

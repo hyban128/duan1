@@ -1,0 +1,26 @@
+<div class="khung">
+    <div class="login" id="login">
+        
+        <div class="form-container sign-in">
+            <form method="post">
+                <h1>Đăng Ký</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="user" placeholder="Tên khách hàng" required>
+                <input type="password" name="pass" placeholder="Mật khẩu" required>
+                <input type="password" name="passlai" placeholder="Nhập lại mật khẩu" required>
+
+                <input type="text" name="address" placeholder="Địa chỉ(không bắt buộc)" >
+                
+                <!-- <input type="password" name="passlai" placeholder="Nhập lại mật khẩu" required> -->
+                <input type="submit" value="ĐĂNG KÝ" name="dangky">
+                
+            </form>
+        </div>
+         
+    </div>
+</div>
+

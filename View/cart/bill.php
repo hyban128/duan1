@@ -84,7 +84,7 @@
                         <input type="number" min="0" name="phone-number" placeholder="Số Điện Thoại" required>
                         <ion-icon name="call-outline"></ion-icon>
                     </div>
-                    <div class="tt">
+                    <div class="tt" style="margin-bottom: 20px;">
                         <h4>Phương Thức Thanh Toán</h4>
                         <!-- <td><input type="radio" name="pttt" value="1" id="" checked>Thanh toán khi nhận hàng</td>
 
@@ -97,8 +97,9 @@
                             <input type="radio" name="pttt" id="checkbox2">
                             <label for="">Thẻ Tín Dụng</label>
                         </div>
-                        <button class="btn-pay">Đặt hàng</button>
+
                     </div>
+                    <a href="index.php?act=camon" style="background: red;padding: 10px 0;padding-left: 45%;padding-right: 45%;color: #fff;">ĐẶT HÀNG</a>
                 </form>
             </div>
         </section>

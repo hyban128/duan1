@@ -1,5 +1,5 @@
 
-    <div class="contact-us">
+    <div class="contact-us" style="margin-top: 130px;">
         <div class="container">
                 <div class="col-lg-6">
                     <div class="section-heading">

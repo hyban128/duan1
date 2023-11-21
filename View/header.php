@@ -8,7 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="icons/themify-icons-font/themify-icons/themify-icons.css">
     <title>PTAH SHOP</title>
 
 
@@ -25,8 +26,7 @@
     <link rel="stylesheet" href="View/assets/css/pay.css">
 
     <script src="https://kit.fontawesome.com/e6c8e2293e.js" crossorigin="anonymous"></script>
-</head>
-
+    
 <body>
 
 
@@ -46,37 +46,31 @@
                             <li class="submenu">
                                 <a href="#men">Men's</a>
                                 <ul>
-                                    <li><a href="index.php?act=dmsp">Áo Polo</a></li>
-                                    <li><a href="index.php?act=dmsp">Áo Sơ Mi</a></li>
-                                    <li><a href="index.php?act=dmsp">Áo Thun</a></li>
+                                    <?php 
+                                    foreach($danhmuc as $dm):?>
+                                    <li><a href="index.php?act=sanpham&iddm=<?php echo $dm['id_dm']?>"><?php echo $dm['name']?></a></li>
+                                   <?php endforeach?>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">Trang</a>
                                 <ul>
                                     <li><a href="index.php?act=gioithieu">Về Chúng Tôi</a></li>
-                                    <li><a href="#">Sản phẩm</a></li>
-                                    <li  ><a href="index.php?act=lienhe">Liên Hệ Chúng Tôi</a></li>
+                                    <li><a href="index.php?act=hoidap">Hỏi đáp</a></li>
+                                    <li><a href="index.php?act=lienhe">Liên Hệ Chúng Tôi</a></li>
                                 </ul>
                             </li>
-                            <!-- <li class="scroll-to-section"><a href="#explore">Khám Phá</a></li> -->
-                            <li><a href="#"><input type="text" class="seach"></a></li>
-                            <li><a href="#" type="seach"><i class="fa-brands fa-searchengin"></i></a></li>
-                            <li><a href="index.php?act=giohang"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                           
+                            <li><a href="index.php?act=giohang"><i style="line-height: 40px;" class="fa-solid fa-cart-shopping"></i></a></li>
                             <?php
-                            if (isset($_SESSION['taikhoan'])) {
-                                extract($_SESSION['taikhoan']);
-                             echo'<li style="line-height: 40px;">'.$user.'
-                             <ul><li><a href="index.php?act=logout">Thoát</a></li></ul>
-                             
-                             </li>';
-                                   
+                                if(isset($_SESSION['taikhoan'])){?>
+                                                <li><a href="index.php?act=thongtin"><?php echo $_SESSION['taikhoan']['user']?></a></li>
+                                <?php }else{?>
+                                    <li><a href="index.php?act=dangnhap"><i style="line-height: 40px;" class="fa-solid fa-user"></i></a></li>
 
-                            }else{
-                                echo'<li><a href="index.php?act=dangnhap"><i class="fa-solid fa-user"></i></a></li>';
-                            }
-                            ?>
-                        </ul>
+                                <?php }?>
+                            
+                        </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -85,3 +79,4 @@
             </div>
         </div>
     </header>
+   

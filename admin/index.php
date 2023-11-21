@@ -4,7 +4,7 @@ include ("../model/danhmuc.php");
 include ("../model/hanghoa.php");
 include ("../model/taikhoan.php");
 include ("../model/binhluan.php");
-
+include ("../model/sanphambt.php");
 include("header.php");
 
 if(isset($_GET['act'])){
@@ -64,6 +64,11 @@ if(isset($_GET['act'])){
                     $image=$hinh['name'];
                     $target_file=$target_div.$image;
                     move_uploaded_file($hinh['tmp_name'], $target_file);
+                    // $image = null;
+                    //             if($_FILES['image']['name'] != ""){
+                    //                 $image = time() . "_" . $_FILES['image']['name'];
+                    //                 move_uploaded_file($_FILES['image']['tmp_name'], "../upload/$image");
+                              //  }
                     insert_hanghoa($name,$gia,$giamgia,$image,$motasp,$iddm);
                 }
                 $danhmuc= loadAll_danhmuc();
@@ -216,15 +221,63 @@ if(isset($_GET['act'])){
 
                     include "binhluan/list.php";
                     break;
+                    /*sp bien the */
+                case 'addspbt':
+                    if(isset($_POST['sb'])&& $_POST['sb']){
+                        $color=$_POST['color'];
+                        $size=$_POST['size'];
+                        $idsp=$_POST['idsp'];
+                        insert_spbienthe($color,$size,$idsp);
+                    }
+                    $size=loadAll_size();
+                    $color=loadAll_color();
+                    $sanpham=loadAll_sanpham();
+                    $danhmuc= loadAll_danhmuc();
+                    include "sanpham/add.php";
+                    break;
+                case 'listspbt':
+                    $size=loadAll_size();
+                    $color=loadAll_color();
+                    $sanpham=loadAll_sanpham();
+                    $sanphambienthe=loadAll_spbt();
+                    include "sanpham/list.php";
+                    break;
+                case 'suaspbt':
+                    if(isset($_GET['id'])){
+                        $id=$_GET['id'];
+                       $spbt= getOne_bt($id);
+                      
 
+                    
+                }     
+                $size=loadAll_size();
+                $color=loadAll_color();    
+                $sanphambienthe=loadAll_spbt();
+
+                    include "sanpham/update.php";
+                    break;
+                case 'updatespbt':
+                    if(isset($_POST['capnhat'])){
+                       $size=$_POST['size'];
+                       $color=$_POST['color'];
+                       $id_bt=$_POST['id_bt'];
+                    //    $soluong=$_POST['soluong'];
+                    update_sanphambt($size,$color,$id_bt);
+                       header("location:index.php?act=listspbt");
+                    }
+                    $taikhoan=loadAll_taikhoan();
+                    
+                    include "sanpham/update.php";
+                    break;
+                /*Gio hàng */
+                
         default:
-        include("home.php");
+        include("trangchu.php");
           
             break;
     }
 }else{
-    
-    // header("location:index.php?act=bieudo");
+       header("location:index.php?act=adddm");
 }
 include("footer.php");
 ?>

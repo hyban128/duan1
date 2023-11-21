@@ -1,594 +1,92 @@
 
-   
-    <section class="section" id="products">
+<section class="section" id="products">
         <div class="container">
+      
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>Sản Phẩm Mới Nhất Của Chúng Tôi</h2>
-                    </div>
+          
+                <div class="col-lg-12" style="margin-top: 100px;">
+                     <!-- <?php echo $ten?> -->
+                    <?php
+                    if(isset($_POST['kyw'])&&$_POST['kyw']!=""){?>
+                    <?php
+                     $a=   $_POST['kyw'];
+                    ?>
+                            <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.php">Cửa Hàng</a></li>
+                        <li class="breadcrumb-item "><a href="index.php?act=sanpham">Sản phẩm</a></li>
+                        <li class="breadcrumb-item active">Tìm kiếm</li>
+
+                    </ul>
+                       <h3 style="margin-bottom: 20px;">Kết quả tìm kiếm với từ khóa ''<?php echo $a?>''</h3> 
+                   <?php }else{?>
+                           <div class="section-heading">
+                           <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.php">Cửa Hàng</a></li>
+                        <li class="breadcrumb-item "><a href="index.php?act=sanpham">Sản phẩm</a></li>
+                        <li class="breadcrumb-item active"><?php echo $ten?></li>
+
+                    </ul>
+                           <h2>Sản phẩm</h2>
+                           <li>
+                                <form action="index.php?act=sanpham" method="post">
+                                    <input style="line-height: 30px; border: 1px solid #bbb;float: right; overflow: hidden;border-radius: 5px;opacity: 0.6;" type="text" name="kyw" placeholder="Tìm kiếm tại đây..........">
+                                </form>
+                            </li>
+
+                       </div>
+                   <?php }
+                    ?>
+                    
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
+                
+            <?php
+                          foreach($ds_sanpham as $sp):?>
                 <div class="col-lg-4">
-                    <div class="item">
+               
+                        <div class="item">
+                        
                         <div class="thumb">
+                          
+                        
                             <div class="hover-content">
+                            
                                 <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="index.php?act=chitietsp&idsp=<?php echo $sp['id_pro']?>"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
-                            <img src="View/img/aopolo.webp" alt="">
+                            <img src="upload/<?php echo $sp['img']?>" alt="">
                         </div>
-                        <div class="down-content">
-                            <h4>Áo Polo 14ATP004</h4>
-                            <span>450.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
+                        <div class="down-content" style="text-align: center;">
+                            <h4 ><?php echo $sp['name']?></h4>
+                            <div class="nnn" style="    display: flex;justify-content: center;">
+                            <span style="text-decoration: line-through;">
+                                    <?php echo number_format($sp['price']); ?> VNĐ
+                                </span>
+                                <span style="padding-left: 10px; font-weight: 500;color: red;">
+                                    <?php 
+                                        $tt = $sp['price']  - (($sp['price'] * $sp['discount']) / 100);
+                                        echo number_format($tt);
+                                    ?> VNĐ
+                                </span>
                             </div>
-                            <img src="View/img/aopolo2.webp" alt="">
+                            <!-- <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul> -->
                         </div>
-                        <div class="down-content">
-                            <h4>Áo Polo 14ATP005</h4>
-                            <span>390.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
+                        
                         </div>
-                    </div>
+                          
+                           
                 </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aopolo3.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Áo Polo 14ATP007</h4>
-                            <span>370.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aopolo4.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Áo Polo A4578</h4>
-                            <span>500.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aopolo5.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aopolo6.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aopolo7.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aopolo8.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aopolo5.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi2.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi3.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi4.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aothun1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Áo thun 12ATL005</h4>
-                            <span>199.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aothun2.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Áo thun 12ATL005</h4>
-                            <span>199.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aothun3.webp" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Áo thun 12ATL005</h4>
-                            <span>199.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aothun4.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/somi1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Sơ Mi Dài Tay 11ASC001</h4>
-                            <span>249.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="View/img/aothun1.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Áo thun 12ATL005</h4>
-                            <span>199.000 <u>đ</u></span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
+                <?php endforeach?>
             </div>
         </div>
     </section>

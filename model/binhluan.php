@@ -6,7 +6,13 @@
 //     $result=pdo_query($sql);
 //     return $result;
 // }
-
+function load_binhluan($id){
+    $sql="SELECT binhluan.noidung,binhluan.ngaybl,taikhoan.user,taikhoan.avata from binhluan 
+    inner join taikhoan on binhluan.id_user=taikhoan.id_user
+    inner join sanpham on binhluan.id_sp =sanpham.id_pro where sanpham.id_pro='$id'";
+    $result=pdo_query($sql);
+    return $result;
+}
 function delete_binhluan($id){
     $sql="DELETE from binhluan where id_bl='$id'";
     pdo_execute($sql);
@@ -29,6 +35,15 @@ function chitietbl($id){
     $sql="SELECT binhluan.id_bl, binhluan.noidung,taikhoan.user from binhluan 
     inner join taikhoan on binhluan.id_user=taikhoan.id_user
     inner join sanpham on binhluan.id_sp =sanpham.id_pro WHERE sanpham.id_pro='$id';";
-        return pdo_query($sql);
+    return pdo_query($sql);
+}
+function insert_binhluan($idpro, $noidung,$iduser,$date){
+     
+    $sql = "
+        INSERT INTO `binhluan`(`noidung`, `id_user`, `id_sp`,`ngaybl`) 
+        VALUES ('$noidung','$iduser','$idpro','$date');
+    ";
+    header("location:".$_SERVER['HTTP_REFERER']);
+    pdo_execute($sql);
 }
 ?>

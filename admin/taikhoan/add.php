@@ -31,8 +31,11 @@ include("boxtrai.php");
                 </ul>
               </li>
               <li class="list-group-item">Sản phẩm
-              
-            </li>
+              <ul>
+                  <li><a href="index.php?act=addspbt">Thêm mới</a></li>
+                  <li><a href="index.php?act=listspbt">Danh sách</a></li>
+                </ul>
+              </li>
               <li class="list-group-item">Tài khoản
                 <ul>
                   <li><a href="index.php?act=addtk">Thêm mới</a></li>
