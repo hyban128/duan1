@@ -84,7 +84,6 @@ include("boxtrai.php");
     
       <td><?php echo $bl['tensp']?></td>
       <td><?php echo date("d/m/Y", strtotime($bl['ngaybl']))?></td>
-
       <td style="display: flex; flex-direction: row;">
             <!-- <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoabl&id=<?php echo $bl['idpro']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a>  -->
             <a style="text-decoration: none; cursor: pointer;" href="index.php?act=chitietbl&idpro=<?php echo $bl['idpro']?>">Xem bình luận</a>

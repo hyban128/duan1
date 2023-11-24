@@ -15,7 +15,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Thông tin chi tiết
+                        Đơn hàng của tôi
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -34,14 +34,13 @@
                             </li>
                             <li class="list-group-item"><a href="index.php?act=mycart">
                                 <i style="padding: 0 5px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
-                              <?php 
+                                <?php 
                               if(($_SESSION['taikhoan']['role'])==1):?>
                                 <li class="list-group-item">
                                 <a href="admin/index.php"><i style="padding: 0 5px;" class="fa-solid fa-screwdriver-wrench"></i>Đăng nhập admin</a>
                             </li>
                               
                           <?php   endif ?>
-                            
                             <li class="list-group-item">
                             <a href="index.php?act=logout"><i style="padding: 0 5px;" class="fa-solid fa-right-from-bracket"></i>Thoát</a> </li>
 
@@ -59,47 +58,50 @@
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Cập nhật tài khoản</h4>
+        <h4>Đơn hàng của tôi</h4>
       </div>
       <div style="margin-bottom: 20px;">
     </div>
-    <?php
-          if(isset($_SESSION['taikhoan'])&& $_SESSION['taikhoan']){
-            extract($_SESSION['taikhoan']);
-          }
-          ?>
-      <div class="card-body">
-      <form action="index.php?act=updatetk" method="post" enctype="multipart/form-data">
-      <div style="text-align: center;" class="mb-3">
-      <img style="border-radius: 50%; width: 150px;" src="upload/<?php echo !isset($avata)||empty($avata)?'anh (2).jpg':$avata?>" alt=""> <br>
-          <input style="    margin-top: 30px;width: 110px;" type="file" name="avata"  >
-  
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên tài khoản</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1" value="<?php echo $user?>">
-          </div>
-         
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Email</label>
-            <input type="text" name="email" class="form-control" id="exampleInputPassword1" value="<?php echo $email?>">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Address</label>
-            <input type="text" name="address" class="form-control" id="exampleInputPassword1" value="<?php echo $address?>">
-          </div>
-         
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Phone</label>
-            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" value="<?php echo $phone?>">
-          </div>
-    
-          <input type="hidden" name="id" value="<?php echo $id_user?>">
-          <input type="submit" class="btn btn-primary" name="capnhat" value="Cập nhật">
-          <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
-          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </form>
 
+      <div class="card-body">
+      <table class="table">
+  <thead class="table-light">
+    <tr>
+      <!-- <th scope="col">User</th> -->
+      <th scope="col">Ảnh sản phẩm </th>
+      <th scope="col">Tên  </th>
+
+      <!-- <th scope="col">Nội dung</th> -->
+      <th scope="col">Giá</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">Color</th>
+      <th scope="col">Size</th>
+      <th scope="col">Tiền</th>
+      <th scope="col">Chức năng</th>
+    </tr>
+  </thead>
+  <tbody>
+       <?php 
+       if(isset($chitietdh)){?>
+           <?php foreach($chitietdh as $ct):?>
+              <?php extract($ct)?>
+          
+               <tr>
+              <td> <img style="width: 78px;height: 70px;" src="upload/<?php echo $ct['img_sp']?>" alt=""></td>
+              <td><?php echo $ct['tensp']?></td>
+              <td><?php echo $ct['price']?></td>
+              <td><?php echo $ct['soluong']?></td>
+              <td><?php echo $ct['color']==3?'Trắng':'Đen'?> </td>
+              <td> <?php echo $ct['size']==3?'M':'S'?></td>
+              <td> <?php echo $ct['thanhtien']?></td>
+
+              <td><a href="index.php?act=mycart">Quay lại</a></td>
+          </tr>
+          <?php endforeach ?>
+           <?php }?>
+   
+  </tbody>
+</table>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ include ("../model/hanghoa.php");
 include ("../model/taikhoan.php");
 include ("../model/binhluan.php");
 include ("../model/sanphambt.php");
+include ("../model/thongke.php");
 include("header.php");
 
 if(isset($_GET['act'])){
@@ -226,8 +227,10 @@ if(isset($_GET['act'])){
                     if(isset($_POST['sb'])&& $_POST['sb']){
                         $color=$_POST['color'];
                         $size=$_POST['size'];
-                        $idsp=$_POST['idsp'];
-                        insert_spbienthe($color,$size,$idsp);
+                        $sanpham=$_POST['sp'];
+                        $soluong=$_POST['soluong'];
+                        // $idsp=$_POST['idsp'];
+                        insert_spbienthe($size,$color,$sanpham,$soluong);
                     }
                     $size=loadAll_size();
                     $color=loadAll_color();
@@ -270,6 +273,16 @@ if(isset($_GET['act'])){
                     include "sanpham/update.php";
                     break;
                 /*Gio hàng */
+                /*Thong ke */
+                case 'dstk':
+                    $dsthongke=load_thongke_sanpham_danhmuc();
+                    include "thongke/thongke.php";
+                    break;
+                case 'bieudo':
+                    $dsthongke=load_thongke_sanpham_danhmuc();
+                    include "thongke/bieudo.php";
+                    break;
+                
                 
         default:
         include("trangchu.php");

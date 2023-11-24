@@ -89,18 +89,24 @@ include("boxtrai.php");
           </div>
             <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Tên sản phẩm</label>
-            <select name="iddm" id="" class="form-select" aria-label="Default select example">
-                    <?php foreach($sanpham as $dm): ?>
-                    <option value="<?php echo $dm['id_pro']?>"><?php echo $dm['name']?></option>
+            <select name="sp" id="" class="form-select" aria-label="Default select example">
+                    <?php foreach($sanpham as $sp): ?>
+                    <option value="<?php echo $sp['id_pro']?>"><?php echo $sp['name']?></option>
                     <?php endforeach ?>
             </select>
 
-
           </div>
+          <!-- <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Số lượng</label>
+          <input type="text" name="soluong">
+          <div class="mb-3"> -->
+            <label for="exampleInputPassword1" class="form-label">Số lượng</label>
+            <input type="text" name="soluong" class="form-control" id="exampleInputPassword1">
+          </div>
+             </div>
             <!-- <input type=text" name="tenloai" class="form-control" id="exampleInputPassword1"> -->
           </div>
           <div class="inputt" style="text-align: center; margin-bottom: 50px;">
-          <input type="hidden" name="idsp" value="<?php echo $dm['id_pro']?>">
           <input type="submit" class="btn btn-primary" name="sb" value="Thêm mới">
           <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->

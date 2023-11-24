@@ -15,7 +15,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Thông tin chi tiết
+                        Đơn hàng của tôi
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -32,11 +32,15 @@
                             <li class="list-group-item">
                                     <a href="index.php?act=doimk"><i style="padding: 0 5px;" class="fa-solid fa-key"></i>Đổi mật khẩu</a>
                             </li>
-                            <li class="list-group-item"><a href="index.php?act=donhang">
+                            <li class="list-group-item"><a href="index.php?act=mycart">
                                 <i style="padding: 0 5px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
-                            <li class="list-group-item">
+                                <?php 
+                              if(($_SESSION['taikhoan']['role'])==1):?>
+                                <li class="list-group-item">
                                 <a href="admin/index.php"><i style="padding: 0 5px;" class="fa-solid fa-screwdriver-wrench"></i>Đăng nhập admin</a>
                             </li>
+                              
+                          <?php   endif ?>
                             <li class="list-group-item">
                             <a href="index.php?act=logout"><i style="padding: 0 5px;" class="fa-solid fa-right-from-bracket"></i>Thoát</a> </li>
 
@@ -64,26 +68,35 @@
   <thead class="table-light">
     <tr>
       <!-- <th scope="col">User</th> -->
-      <th scope="col">Tên sản phẩm </th>
-      <th scope="col">Ảnhsản phẩm </th>
+      <th scope="col">Mã đơn hàng </th>
+      <th scope="col">Ngày đặt hàng </th>
 
       <!-- <th scope="col">Nội dung</th> -->
-      <th scope="col">Ngày đặt hàng</th>
       <th scope="col">Số lượng</th>
-      <th scope="col">Thành tiền</th>
-      
+      <th scope="col">Tổng tiền</th>
+      <th scope="col">Trạng thái</th>
       <th scope="col">Chức năng</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-        <td>name</td>
-        <td><img src="../../upload/ô tô.jpg" alt=""></td>
-        <td>12/11/2023</td>
-        <td>5</td>
-        <td>2500</td>
-        <td><a href="">Xem chi tiết</a></td>
-    </tr>
+       <?php 
+       if(isset($listdonhang)){?>
+           <?php foreach($listdonhang as $bill):?>
+              <?php extract($bill)?>
+             <?php $ttdh=get_ttdh($bill['trangthai']);
+              $count_sp=loadall_cart_count($bill['id_bill']);
+              ?>
+               <tr>
+              <td><?php echo $bill['id_bill']?></td>
+              <td><?php  echo date("d/m/Y", strtotime($bill['ngaydat']))?></td>
+              <td><?php echo $count_sp?> </td>
+              <td> <?php echo $bill['tongtien']?></td>
+              <td><?php echo $ttdh?> </td>
+              <td><a href="index.php?act=chitietdonhang&idbill=<?php echo $bill['id_bill']?>">Xem chi tiết</a></td>
+          </tr>
+          <?php endforeach ?>
+           <?php }?>
+   
   </tbody>
 </table>
       </div>

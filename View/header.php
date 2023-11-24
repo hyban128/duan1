@@ -71,9 +71,7 @@
                                 <?php }?>
                             
                         </ul>        
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
+
                     </nav>
                 </div>
             </div>

@@ -33,11 +33,15 @@
                             <li class="list-group-item">
                                     <a href="index.php?act=doimk"><i style="padding: 0 5px;" class="fa-solid fa-key"></i>Đổi mật khẩu</a>
                             </li>
-                            <li class="list-group-item"><a href="index.php?act=donhang">
+                            <li class="list-group-item"><a href="index.php?act=mycart">
                                 <i style="padding: 0 5px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
-                            <li class="list-group-item">
+                              <?php 
+                              if(($_SESSION['taikhoan']['role'])==1):?>
+                                <li class="list-group-item">
                                 <a href="admin/index.php"><i style="padding: 0 5px;" class="fa-solid fa-screwdriver-wrench"></i>Đăng nhập admin</a>
                             </li>
+                              
+                          <?php   endif ?>
                             <li class="list-group-item">
                             <a href="index.php?act=logout"><i style="padding: 0 5px;" class="fa-solid fa-right-from-bracket"></i>Thoát</a> </li>
 

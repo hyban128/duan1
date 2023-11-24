@@ -46,6 +46,11 @@ function loadAll_sanpham($kyw="",$iddm=0){ /*Danh sach*/
     $sp=pdo_query_one($sql);
     return $sp;
  }
+ function load_sp_cungloai($id,$iddm){/*san pham cung loai */
+    $sql="SELECT * from sanpham where iddm ='$iddm' and id_pro <>'$id'";
+    $sanpham=pdo_query($sql);
+     return $sanpham;
+ }
  function luotxem($id){
     $sanpham=loadOne_sanpham($id);
     $luotxem=$sanpham['luotxem']+1;
@@ -75,5 +80,26 @@ function loadAll_sanpham($kyw="",$iddm=0){ /*Danh sach*/
         //  pdo_execute($sql);   
                 
  }
+function giacao(){
+    // $tt = $sp['price']  - (($sp['price'] * $sp['discount']) / 100);
+ 
+    $sql="SELECT * FROM sanpham WHERE (price-(price*discount)/100)>300000";
+   $sp=pdo_query($sql);
+   return $sp;
+}
+function giaduoi100(){
+    // $tt = $sp['price']  - (($sp['price'] * $sp['discount']) / 100);
+ 
+    $sql="SELECT * FROM sanpham WHERE (price-(price*discount)/100)<100000";
+   $sp=pdo_query($sql);
+   return $sp;
+}
+function gianuagiua(){
+    // $tt = $sp['price']  - (($sp['price'] * $sp['discount']) / 100);
+ 
+    $sql="SELECT * FROM sanpham WHERE (price-(price*discount)/100)>100000 and (price-(price*discount)/100)<300000";
+   $sp=pdo_query($sql);
+   return $sp;
+}
 
 ?>

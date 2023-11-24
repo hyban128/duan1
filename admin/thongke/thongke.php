@@ -13,7 +13,7 @@ include("boxtrai.php");
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <ul class="list-group">
+          <ul class="list-group">
               <!-- <li class="list-group-item active"></li> -->
 
 
@@ -49,10 +49,7 @@ include("boxtrai.php");
               </li>
               <li class="list-group-item">Đơn hàng</li>
               <li class="list-group-item">Thống kê
-
- <ul>
-                <li><a href="index.php?act=dstk">Danh sách</a></li>
-                </ul>
+               
               </li>
 
             </ul>
@@ -67,28 +64,39 @@ include("boxtrai.php");
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Đăng ký tài khoản</h4>
+        <h4>DANH SÁCH THỐNG KÊ </h4>
+      </div>
+      <div class="table_light">
+        <h4 style="text-align: center;font-size: 15px;border: 1px solid #ccc;margin: 10px;color: red;font-weight: 700; background: antiquewhite;padding: 5px 0px;">Thống kê sản phẩm theo danh mục</h4>
       </div>
       <div class="card-body">
-        <form method="post" action="index.php?act=addtk">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" >
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên đăng nhập</label>
-            <input type=text" name="user" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-            <input type=text" name="pass" class="form-control" id="exampleInputPassword1">
-          </div>
+      <table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Tên loại</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">Giá nhỏ nhất</th>
+      <th scope="col">Giá cao nhất</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+   foreach($dsthongke as $ds):?>
+    <tr>
+    
+      <td><?php echo $ds['name']?></td>
+      <td><?php echo $ds['soluong']?></td>
+      <td><?php echo number_format($ds['gia_min']) .' VND'?></td>
+      <td><?php echo number_format($ds['gia_max']) .' VND'?></td>
 
-          <input type="submit" class="btn btn-primary" name="dangky" value="Thêm mới">
-          <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
-          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </form>
-  
+     
+      
+    </tr>
+   <?php endforeach?>
+  </tbody>
+</table>
+           <a href="?act=bieudo"><input type="button" value="BIỂU ĐỒ"></a>
       </div>
     </div>
   </div>

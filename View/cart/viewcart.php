@@ -80,7 +80,7 @@
                                         </td>
                                     
                                      <td style="background-color: #ccc;">
-                                     <a  href="index.php?act=bill"><input style="background: blue; border: none;padding: 0 5px;   color: orange; font-weight: 800;" value="Thanh Toán" type="submit"></a> 
+                                     <a  href="index.php?act=bill"><input style="background: blue; border: none;padding: 0 5px;   color: orange; font-weight: 800;" value="Tiếp tục" name="tt" type="submit"></a> 
 
                                      </td>
                         
@@ -89,53 +89,27 @@
 
                             </tbody>
                         </table>
+<?php
+if(isset($_SESSION['thongbao'])){?>
+    <span style="color: red;"><?php echo $_SESSION['thongbao'] ?></span>
+<?php }else{?>
+    <?php $_SESSION['thongbao']=""?>
+<?php }?>
 
                     </div>
+                   
+                    <?php
+                    
+                    if(!$_SESSION['cart']){
+    echo'<h4 style="color:red;">Không có sản phẩm nào trong giỏ hàng quay lại để mua</h4>';
+// header("location:index.php");
+ }
+
+
+?>
                 </div>
             </div>
-           
-            <section class="section" id="men">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="section-heading">
-                                <h6 style="float: left;">Có thể bạn cũng thích</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="men-item-carousel">
-                                <div class="owl-men-item owl-carousel">
-                                    <div class="item">
-                                        <div class="thumb">
-                                            <div class="hover-content">
-                                                <ul>
-                                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <img src="View/img/aopolo2.webp" alt="">
-                                        </div>
-                                        <div class="down-content">
-                                            <h4>Áo Polo 14ATP004</h4>
-                                            <span>450.000 <u>đ</u></span>
-                                          
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
 
         </div>
     </div>
-</div>
-</div>
 </div>

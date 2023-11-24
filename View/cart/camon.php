@@ -22,7 +22,7 @@
                     <h1 style="    padding-top: 15px;font-size: 25px; padding-bottom: 15px;">Đặt hàng thành công!</h1>
                      <p>Cảm ơn quý khách đã đặt hàng tại FTAH SHOP</p>
                      <div class="btn-ch" style="margin-top: 10px;">
-                     <a style=" border: 1px solid #ccc;padding: 5px 10px;background: antiquewhite;" href="">Chi tiết đơn hàng</a>
+                     <a style=" border: 1px solid #ccc;padding: 5px 10px;background: antiquewhite;" href="index.php?act=mycart">Chi tiết đơn hàng</a>
                            <a style="    border: 1px solid #ccc;padding: 5px 10px; margin-left: 15px;    background: gainsboro;" href="index.php?act=trangchu">Quay lại trang chủ</a>
                      </div>
                           
