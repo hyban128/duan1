@@ -107,7 +107,13 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "View/taikhoan/dangnhap.php";
 
             break;
+           
         case 'updatetk':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                $taikhoanm=loadOne_tk($id);
+                extract($taikhoanm);
+            }
             if(isset($_POST['capnhat']) && $_POST['capnhat']){
                 $user=$_POST['user'];
                 $email=$_POST['email'];
@@ -121,15 +127,13 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 move_uploaded_file($hinh['tmp_name'], $target_file);
                              
                     $id=$_POST['id'];
-                update_tkView($id,$user,$email,$image,$diachi,$phone);
-               
-                $_SESSION['taikhoan']=check_user($email,$pass);
-                header("location:index.php?act=logout");
-                $_SESSION['ok']="Vui lòng đăng nhập lại";
+                 update_tkView($id,$user,$email,$image,$diachi,$phone);
+                 header("location:index.php?act=thongtin");
+                    
+                }
                 
-            }
-
-            include "View/taikhoan/thongtin.php";
+               
+            include "View/taikhoan/capnhat.php";
             break;
 
         case 'logout':
@@ -169,6 +173,11 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "View/taikhoan/quenmk.php";
             break;
         case 'thongtin':
+            if(isset($_SESSION['taikhoan'])){
+                extract($_SESSION['taikhoan']);
+                $user=loadOne_tk($id_user);
+                extract($user);
+            }
             include "View/taikhoan/thongtin.php";
             break;
         case 'donhang':
@@ -367,7 +376,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                             $phone=$_POST['phone'];
                             $pttt=$_POST['pttt'];
                             $ngaydathang=date('Y/m/d');
-                            $tongdonhang= tongdonhang();
+                            $tongdonhang=tongdonhang();
                             $idbill= insert_bill($iduser,$name,$email,$address,$phone,$pttt,$ngaydathang,$tongdonhang);
                             //insert into cart :lay du lieu session va $idbill
                             //Cap nhap vo gio hang(tao gio hang)

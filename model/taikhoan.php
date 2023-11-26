@@ -24,9 +24,10 @@ function insert_dangky($email,$user,$pass){
      pdo_execute($sql);
   }
   function update_taikhoan($id,$user,$pass,$email,$avata,$address,$phone,$role) {
+
+    
     $sql="UPDATE taikhoan SET user='$user',pass='$pass',email='$email',avata='$avata',address='$address',phone='$phone',role='$role' where id_user='$id'";
     pdo_execute($sql);
-    header("location:".$_SERVER['HTTP_REFERER']);
   
   }
   function check_user($email,$pass){

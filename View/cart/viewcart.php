@@ -90,7 +90,7 @@
                             </tbody>
                         </table>
 <?php
-if(isset($_SESSION['thongbao'])){?>
+if(!isset($_SESSION['taikhoan'])){?>
     <span style="color: red;"><?php echo $_SESSION['thongbao'] ?></span>
 <?php }else{?>
     <?php $_SESSION['thongbao']=""?>

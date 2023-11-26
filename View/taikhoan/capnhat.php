@@ -26,7 +26,7 @@
 
 
                             <li class="list-group-item">
-                                <a href="index.php?act=updatetk&id=<?php echo $_SESSION['taikhoan']['id_user'] ?>"><i style="padding: 0 5px;" class="fa-solid fa-pen-to-square"></i>Cập nhật tài khoản</a>
+                                <a href="index.php?act=updatetk&id=<?php $id_user?>"><i style="padding: 0 5px;" class="fa-solid fa-pen-to-square"></i>Cập nhật tài khoản</a>
 
                             </li>
                             <li class="list-group-item">
@@ -59,15 +59,16 @@
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Thông tin tài khoản</h4>
+        <h4>Cập nhật tài khoản</h4>
       </div>
       <div style="margin-bottom: 20px;">
     </div>
-           
+
       <div class="card-body">
+      <form action="index.php?act=updatetk" method="post" enctype="multipart/form-data">
       <div style="text-align: center;" class="mb-3">
       <img style="border-radius: 50%; width: 150px;" src="upload/<?php echo !isset($avata)||empty($avata)?'anh (2).jpg':$avata?>" alt=""> <br>
-          <input  style="    margin-top: 30px;width: 130px; padding: 5px 8px;background-color: #ccc;" type="text" name="avata" value="<?php echo $user?>"  >
+          <input style="    margin-top: 30px;width: 110px;" type="file" name="avata"  >
   
           </div>
           <div class="mb-3">
@@ -81,7 +82,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Address</label>
-            <input type="text" name="address" class="form-control" id="exampleInputPassword1" value="<?php echo $address?>">
+            <input type="text" name="address" class="form-control" id="exampleInputPassword1" value="<?php echo $taikhoanm['address']?>">
           </div>
          
           <div class="mb-3">
@@ -89,7 +90,11 @@
             <input type="text" name="phone" class="form-control" id="exampleInputPassword1" value="<?php echo $phone?>">
           </div>
     
-      
+          <input type="hidden" name="id" value="<?php echo $id_user?>">
+          <input type="submit" class="btn btn-primary" name="capnhat" value="Cập nhật">
+          <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+        </form>
 
       </div>
     </div>

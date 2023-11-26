@@ -4,7 +4,7 @@
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="View/img/logo.png"alt="PTAH SHOP">
+                            <img src="upload/logo.png"alt="PTAH SHOP">
                         </div>
                         <ul>
                             <li><a href="#">Số 1 Trịnh Văn Bô Nam Từ Niêm Hà Nội</a></li>

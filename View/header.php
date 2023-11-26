@@ -37,7 +37,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.php" class="logo">
-                            <img src="View/img/logo-removebg-preview.png" width="150px" height="150px">
+                            <img src="upload/logo-removebg-preview.png" width="150px" height="150px">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
