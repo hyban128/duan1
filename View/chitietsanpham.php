@@ -187,28 +187,32 @@ if (isset($spbt_sp)) {
                     </div>
                 </div>
             </div>
+            <div class="container">
+
+          
             <div class="comment">
 
                 <div class="" style="margin-top: 0;">
 
                     <?php foreach ($binhluan as $bl) : ?>
-                        <div style=" padding: 10px 15px;border: 1px solid #ccc;">
+                        <div class="" style=" padding: 10px 15px;border: 1px solid #ccc;">
 
 
                             <div style="display: flex;flex-direction: row;">
                                 <img src="upload/<?php echo !isset($bl['avata']) || empty($bl['avata']) ? 'anh (2).jpg' : $bl['avata'] ?>" alt="User Avatar" class="avatar">
 
-                                <h5 style="line-height: 50px;"><?php echo $bl['user'] ?></h5>
+                                <h6 style="line-height: 50px;"><?php echo $bl['user'] ?></h6>
 
                             </div>
 
                             <p><?php echo $bl['noidung'] ?></p>
-                            <p><?php echo  date("d/m/Y", strtotime($bl['ngaybl'])) ?></p>
+                            <p style="font-size: 10px ;opacity: 0.5;"><?php echo  date("d/m/Y", strtotime($bl['ngaybl'])) ?></p>
                         </div>
                 </div>
 
             <?php endforeach ?>
 
+            </div>
             </div>
             <section class="section" id="men">
                 <div class="container">

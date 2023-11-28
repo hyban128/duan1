@@ -13,7 +13,7 @@ include("boxtrai.php");
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <ul class="list-group">
+          <ul class="list-group">
               <!-- <li class="list-group-item active"></li> -->
 
 
@@ -47,22 +47,8 @@ include("boxtrai.php");
                   <li><a href="index.php?act=dsbl">Danh sách</a></li>
               </ul>
               </li>
-              <li class="list-group-item">Blog
-              <ul>
-                  <li><a href="index.php?act=addblog">Thêm mới</a></li>
-                  <li><a href="index.php?act=dsblog">Danh sách</a></li>
-              </ul>
-              </li>
               <li class="list-group-item">Đơn hàng</li>
-              <ul>
-                <li><a href="index.php?act=dsgh">Danh sách</a></li>
-              </ul>
-              <li class="list-group-item">Thống kê
-
-                 <ul>
-                <li><a href="index.php?act=dstk">Danh sách</a></li>
-                </ul>
-              </li>
+              <li class="list-group-item">Thống kê</li>
 
             </ul>
           </div>
@@ -76,28 +62,53 @@ include("boxtrai.php");
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Đăng ký tài khoản</h4>
+        <h4>Quản lý giỏ hàng</h4>
       </div>
       <div class="card-body">
-        <form method="post" action="index.php?act=addtk">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" >
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên đăng nhập</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-            <input type="text" name="pass" class="form-control" id="exampleInputPassword1">
-          </div>
+      <table class="table" align="center">
+  <thead class="table-light">
+    <tr align="center">
+      <th scope="col">Mã </th>
+      <th scope="col">Tên </th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">Tổng tiền</th>
+      <th scope="col">Chi tiết</th>
+      <th scope="col">Trạng thái</th>
+      <th  style="padding-left: 40px;" scope="col">Chức năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+   foreach($giohang as $gh):
+    $soluong= loadall_cart_count($gh['id_bill']);
+    $trangthai=  get_ttdh($gh['trangthai']);
+   ?>
 
-          <input type="submit" class="btn btn-primary" name="dangky" value="Thêm mới">
-          <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
-          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </form>
-  
+    <tr align="center">
+      <td><?php echo $gh['id_bill']?></td>
+    
+      <td><?php echo $gh['name_user']?></td>
+      <td><?php echo $gh['address']?></td>
+      <td><?php echo $gh['phone']?></td>
+      <td><?php echo $soluong?></td>
+      <td><?php echo $gh['tongtien']?></td>
+      <td><?php echo 'chi tiết để đấy'?></td>
+      <td><?php echo $trangthai?></td>
+
+      
+      
+      <td style=" text-align: center;">
+          
+            <a href="index.php?act=suadh&id=<?php echo $gh['id_bill']?>"><input style="margin: 0px 10px;color: blue;" class="btn btn-primary "type="button" value="Sửa"></a> 
+            <!-- <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoatk&id=<?php echo $tk['id_user']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a>  -->
+    </td>
+    </tr>
+   <?php endforeach?>
+  </tbody>
+</table>
+
       </div>
     </div>
   </div>

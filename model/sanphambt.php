@@ -14,7 +14,7 @@ function loadAll_color(){
      pdo_execute($sql);
  }
  function loadAll_spbt(){
-    $sql="SELECT sp_bienthe.id_bt as id_bt,sp_bienthe.soluong,sanpham.name as name,size.size as size,color.color as color FROM sp_bienthe JOIN size on sp_bienthe.id_size=size.id_size join color on sp_bienthe.id_color=color.id_color join sanpham on sp_bienthe.id_sp=sanpham.id_pro";
+    $sql="SELECT sp_bienthe.id_bt as id_bt,sp_bienthe.soluong,sanpham.name as name,size.size as size,color.color as color FROM sp_bienthe JOIN size on sp_bienthe.id_size=size.id_size join color on sp_bienthe.id_color=color.id_color join sanpham on sp_bienthe.id_sp=sanpham.id_pro order by id_pro desc";
    $bt= pdo_query($sql);
    return $bt;
  }

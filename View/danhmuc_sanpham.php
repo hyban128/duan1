@@ -1,51 +1,6 @@
-<style>
-    .menu ul {
-        /* background: #8AD385; */
-        width: 150px;
-        padding: 0;
-        list-style-type: none;
-        text-align: left;
-    }
 
-    .menu li {
-        width: auto;
-        /* height: 40px; */
-        line-height: 40px;
-        border: 1px solid #e8e8e8;
-        padding: 0 10px;
-    }
-
-    .menu li a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 400;
-        display: block;
-    }
-
-    /* .sub-doc{
-    float: left;
-  } */
-    .menu ul li {
-        position: relative;
-    }
-
-
-
-    .menu .sub-menu {
-        position: absolute;
-        left: 2px;
-        top: 20;
-        display: none;
-    }
-    .menu .sub-menu li{
-width: 150px;
-    }
-    .menu li:hover .sub-menu {
-        display: block;
-    }
-</style>
 <section class="section" id="products">
-    <div class="container">
+    <div class="container" style="margin-top: 80px;">
 
         <div class="row">
 
@@ -83,27 +38,22 @@ width: 150px;
                     </li>
 
             </div>
-            <li>
-                            <div class="menu">
+                         <li>
+                         <div class="dropdown" style="margin-bottom: 10px;">
+  <a style="width: 15%;background-color: #e9ecef;color: #000;" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Giá
+  </a>
 
-                                <ul>
+  <ul class="dropdown-menu">
+  <li><a class="dropdown-item" href="index.php?act=tren300">Tất cả</a></li>
 
-                                    <li>
-                                        <h6 style="text-align: center;font-weight: 700;">
-                                         Lọc <i class="fa-solid fa-angle-down" style="color: #050c1a;"></i></h6>
-
-                                        <ul class="sub-menu">
-                                        <li><a href="index.php?act=sanpham">Tất cả</a></li>
-
-                                            <li><a href="index.php?act=tren300">Trên 300</a></li>
-                                            <li><a href="index.php?act=100den200">Từ 100 đến 200</a></li>
-
-                                            <li><a href="index.php?act=duoi100">Dưới 100</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
+    <li><a class="dropdown-item" href="index.php?act=tren300">Trên 300</a></li>
+    <li><a class="dropdown-item" href="index.php?act=100den200">Từ 100 đến 300</a></li>
+    <li><a class="dropdown-item" href="index.php?act=duoi100">Dưới 100</a></li>
+  </ul>
+</div>
                         </li>
+ 
         <?php }
         ?>
 

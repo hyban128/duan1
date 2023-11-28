@@ -13,11 +13,12 @@ function tongdonhang()
 
    return $tong;
 }
-function insert_bill($iduser,$name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang){
-    $sql="INSERT INTO bill(id_user, name_user, address,email,phone, pttt, ngaydat, tongtien) VALUES ('$iduser','$name','$address','$email','$tel','$pttt','$ngaydathang','$tongdonhang')";
+function insert_bill($iduser,$name,$email,$address,$phone,$pttt,$ngaydathang,$tongdonhang){
+    $sql="INSERT INTO bill(id_user, name_user, address,email,phone, pttt, ngaydat, tongtien) VALUES ('$iduser','$name','$address','$email','$phone','$pttt','$ngaydathang','$tongdonhang')";
   
   
- return pdo_execute_return_lastInsertID($sql);
+ $kq= pdo_execute_return_lastInsertID($sql);
+ return $kq;
 }
 
 function insert_cart($iduser,$idpro,$img,$name,$price,$soluong,$size,$color,$thanhtien,$idbill){
@@ -25,7 +26,9 @@ function insert_cart($iduser,$idpro,$img,$name,$price,$soluong,$size,$color,$tha
     $sql="INSERT INTO chitietdonhang(id_user, id_sp, img_sp, tensp, price, soluong,color,size, thanhtien, id_bill) VALUES ('$iduser','$idpro','$img','$name','$price','$soluong','$color','$size','$thanhtien','$idbill')";
 
  
-    pdo_execute($sql);
+   $kq= pdo_execute($sql);
+   return $kq;
+
   }
   function loadone_bill($idbill){
     $sql="SELECT *FROM bill where id_bill='$idbill'";
@@ -37,7 +40,6 @@ function insert_cart($iduser,$idpro,$img,$name,$price,$soluong,$size,$color,$tha
     $sql="SELECT *FROM bill where 1";/*iduser =0 load tat ca */
     if($iduser>0) $sql.=" AND id_user='$iduser'";/*neu iduser>0 thuc hien noi chuoi */
     $sql.=" order by id_bill asc";
-    // $sql="SELECT * FROM `bill` WHERE 1 AND iduser=$iduser ORDER BY id ";
    $listbill= pdo_query($sql);
    return $listbill;
   }
@@ -47,11 +49,12 @@ $listbill=pdo_query($sql);
 return $listbill;
 
 }
-  // function loadll_cart($iduser){
-  //   $sql="SELECT *FROM cart where iduser='$iduser'";
-  //   $bill=pdo_query($sql);
-  //   return $bill;
-  // }
+function update_bill($id,$khachhang,$diachi,$dienthoai,$trangthai){
+  $sql=" UPDATE bill SET name_user='$khachhang',`address`='$diachi',phone='$dienthoai',trangthai='$trangthai' WHERE id_bill='$id'";
+  pdo_execute($sql);
+
+ }
+
   function loadall_cart($idbill){
     $sql="SELECT *FROM chitietdonhang where id_bill='$idbill'";
     $bill=pdo_query($sql);
@@ -65,16 +68,13 @@ return $listbill;
   }
   function delete_bill($id){
       $sql="DELETE from bill where id_bill='$id'";
-      pdo_execute($sql);
+      $kq= pdo_execute($sql);
+      return $kq;
   }
-  // function update_bill($id,$khachhang,$email,$diachi,$dienthoai,$trangthai){
-  //  $sql=" UPDATE bill SET name='$khachhang',email='$email',`address`='$diachi',tel='$dienthoai',trangthai='$trangthai' WHERE id='$id'";
-  //  pdo_execute($sql);
 
-  // }
 
-  function get_ttdh($n){ /*trang thai don hang */
-  switch ($n){
+  function get_ttdh($trangthai){ /*trang thai don hang */
+  switch ($trangthai){
     case '0':
       $tt="Chờ xác nhận";
       break;

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ("../model/pdo.php");
 include ("../model/danhmuc.php");
 include ("../model/hanghoa.php");
@@ -6,6 +7,8 @@ include ("../model/taikhoan.php");
 include ("../model/binhluan.php");
 include ("../model/sanphambt.php");
 include ("../model/thongke.php");
+include ("../model/giohang.php");
+include ("../model/blog.php");
 include("header.php");
 
 if(isset($_GET['act'])){
@@ -272,18 +275,102 @@ if(isset($_GET['act'])){
                     
                     include "sanpham/update.php";
                     break;
-                /*Gio hàng */
                 /*Thong ke */
                 case 'dstk':
-                    $dsthongke=load_thongke_sanpham_danhmuc();
+                    $dsthongke= thongke_sp_danhmuc();
                     include "thongke/thongke.php";
                     break;
                 case 'bieudo':
-                    $dsthongke=load_thongke_sanpham_danhmuc();
+                    $dsthongke= thongke_sp_danhmuc();
                     include "thongke/bieudo.php";
                     break;
+                /*Blog */
                 
+                case 'addblog':
+                   if(isset($_POST['them'])&& $_POST['them']){
+                    $id= $_SESSION['taikhoan']['id_user'];
+                    $title=$_POST['title'];
+                    $noidung=$_POST['content'];
+                    $ngaydang=date('Y/m/d');
+                    $hinh=$_FILES['image'];
+                    $target_div="../upload/";
+                    $image=$hinh['name'];
+                    $target_file=$target_div.$image;
+                    move_uploaded_file($hinh['tmp_name'], $target_file);
+                    insert_blog($id,$image,$title,$noidung,$ngaydang);
+                   }
+                //   $taikhoan= loadAll_taikhoan();
+                    include "blog/add.php";
+                break;
+
+                case 'dsblog':
+                    $blog=loadall_blog();
+                     include "blog/list.php";
+                     break;
+                case 'updateblog':
+          if(isset($_GET['id'])){
+            $id=$_GET['id'];
+           $oneblog= loadone_blog($id);
+          }
+          if(isset($_POST['capnhat'])){
+                                
+            $tieude=$_POST['title'];
+           $noidung=$_POST['noidung'];
+           $ngaysua=$_POST['ngaysua'];
+            $id=$_POST['id'];
+            $hinh=$_FILES['image'];
+            $target_div="../upload/";
+            $image=$hinh['name'];
+            $target_file=$target_div.$image;
+            move_uploaded_file($hinh['tmp_name'], $target_file);
+                     
+
+         update_blog($id,$image,$tieude,$noidung,$ngaysua);
+          
+                    header("location:index.php?act=dsblog");// $thongbao="Cap nhap thanh cong";
+                    
+                    }
+               
+
+                    $sanpham=loadAll_sanpham();
+                    $danhmuc=loadAll_danhmuc();
+          include "blog/update.php";
+                    break;
+        case 'xoablog':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                delete_blog($id);
+                header("location:index.php?act=dsblog");
+            }
+           include "blog/list.php";
+            break;
+
+        /*Giỏ hàng */
+        case 'dsgh':
+           $giohang= loadall_bill(0);
+            include "donhang/list.php";
+            break;
+        case 'suadh':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                $onebill=loadone_bill($id);
+            }
+            include "donhang/update.php";
+            break;
+        case 'updatedh':
+           if(isset($_POST['capnhat']) && $_POST['capnhat']){
+                $khachhang=$_POST['user'];
                 
+                $diachi=$_POST['address'];
+                $dienthoai=$_POST['phone'];
+                $trangthai=$_POST['trangthai'];
+                $id=$_POST['id'];
+                update_bill($id,$khachhang,$diachi,$dienthoai,$trangthai);
+                header("location:index.php?act=dsgh");
+            }
+            $listbill=loadall_bill(0);
+            include "donhang/update.php";
+            break;
         default:
         include("trangchu.php");
           

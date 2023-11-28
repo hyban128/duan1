@@ -54,12 +54,9 @@ include("boxtrai.php");
               </ul>
               </li>
               <li class="list-group-item">Đơn hàng</li>
-              <ul>
-                <li><a href="index.php?act=dsgh">Danh sách</a></li>
-              </ul>
               <li class="list-group-item">Thống kê
 
-                 <ul>
+                <ul>
                 <li><a href="index.php?act=dstk">Danh sách</a></li>
                 </ul>
               </li>
@@ -72,28 +69,34 @@ include("boxtrai.php");
 
 
   </div>
+
+
   <div class="col-md-9">
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Đăng ký tài khoản</h4>
+        <h4>Thêm mới blog</h4>
       </div>
       <div class="card-body">
-        <form method="post" action="index.php?act=addtk">
+        <form method="post" action="index.php?act=addblog" enctype="multipart/form-data">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" >
+            <label for="exampleInputEmail1" class="form-label">Ảnh blog</label>
+            <input type="file" class="form-control" name="image" id="exampleInputEmail1" >
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên đăng nhập</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1">
+            <label for="exampleInputPassword1" class="form-label">Tiêu đề</label>
+            <input type="text" name="title" class="form-control" id="exampleInputPassword1">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-            <input type="text" name="pass" class="form-control" id="exampleInputPassword1">
+            <label for="exampleInputPassword1" class="form-label">Nội dung</label>
+            <textarea name="content" id="" cols="30" rows="10" class="form-control" id="exampleInputPassword1">  </textarea>
           </div>
-
-          <input type="submit" class="btn btn-primary" name="dangky" value="Thêm mới">
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Ngày đăng</label>
+            <input type="date" name="" class="form-control" id="exampleInputPassword1">
+          </div>
+          <input type="hidden" class="btn btn-primary" name="iduser" value="<?php echo $id?>">
+          <input type="submit" class="btn btn-primary" name="them" value="Thêm mới">
           <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         </form>

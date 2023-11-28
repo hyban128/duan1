@@ -13,7 +13,7 @@ include("boxtrai.php");
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <ul class="list-group">
+          <ul class="list-group">
               <!-- <li class="list-group-item active"></li> -->
 
 
@@ -54,15 +54,7 @@ include("boxtrai.php");
               </ul>
               </li>
               <li class="list-group-item">Đơn hàng</li>
-              <ul>
-                <li><a href="index.php?act=dsgh">Danh sách</a></li>
-              </ul>
-              <li class="list-group-item">Thống kê
-
-                 <ul>
-                <li><a href="index.php?act=dstk">Danh sách</a></li>
-                </ul>
-              </li>
+              <li class="list-group-item">Thống kê</li>
 
             </ul>
           </div>
@@ -76,28 +68,52 @@ include("boxtrai.php");
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Đăng ký tài khoản</h4>
+        <h4>Danh sách blog</h4>
       </div>
+      
       <div class="card-body">
-        <form method="post" action="index.php?act=addtk">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" >
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên đăng nhập</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-            <input type="text" name="pass" class="form-control" id="exampleInputPassword1">
-          </div>
+      <table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Mã </th>
+      <th scope="col">Người đăng </th>
+      <th scope="col">Ảnh </th>
+      <th scope="col">Title </th>
+      <th scope="col">Nội dung</th>
+      <th scope="col">Ngày đăng</th>
+      <th  style="padding-left: 40px;" scope="col">Chức năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+   
+   foreach($blog as $bg):?>
+    <tr>
+      <td><?php echo $bg['id_blog']?></td>
+    <td><?php echo $bg['user']?></td>
+      <td>
+      <img width="80px" src="../upload/<?php echo $bg['img']?>" alt="">
 
-          <input type="submit" class="btn btn-primary" name="dangky" value="Thêm mới">
-          <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
-          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </form>
+    </td>
+      <td><?php echo $bg['title']?></td>
+      <td style="width: 20%;"><?php echo $bg['noidung']?></td>
+
+      
+</div>
+      <td> <?php echo date("d/m/Y", strtotime($bg['ngaydang']))?> 
+      
+    </td>
+      <td style="display: flex; flex-direction: row;">
+          
+            <a href="index.php?act=updateblog&id=<?php echo $bg['id_blog']?>"><input style="margin: 0px 10px;color: blue;" class="btn btn-primary "type="button" value="Sửa"></a> 
+            <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoablog&id=<?php echo $bg['id_blog']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a> 
+    </td>
+    </tr>
+   <?php endforeach?>
   
+  </tbody>
+</table>
+
       </div>
     </div>
   </div>

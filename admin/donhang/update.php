@@ -13,7 +13,7 @@ include("boxtrai.php");
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <ul class="list-group">
+          <ul class="list-group">
               <!-- <li class="list-group-item active"></li> -->
 
 
@@ -47,22 +47,8 @@ include("boxtrai.php");
                   <li><a href="index.php?act=dsbl">Danh sách</a></li>
               </ul>
               </li>
-              <li class="list-group-item">Blog
-              <ul>
-                  <li><a href="index.php?act=addblog">Thêm mới</a></li>
-                  <li><a href="index.php?act=dsblog">Danh sách</a></li>
-              </ul>
-              </li>
               <li class="list-group-item">Đơn hàng</li>
-              <ul>
-                <li><a href="index.php?act=dsgh">Danh sách</a></li>
-              </ul>
-              <li class="list-group-item">Thống kê
-
-                 <ul>
-                <li><a href="index.php?act=dstk">Danh sách</a></li>
-                </ul>
-              </li>
+              <li class="list-group-item">Thống kê</li>
 
             </ul>
           </div>
@@ -76,28 +62,41 @@ include("boxtrai.php");
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Đăng ký tài khoản</h4>
+        <h4>Cập nhật đơn hàng</h4>
       </div>
-      <div class="card-body">
-        <form method="post" action="index.php?act=addtk">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" >
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên đăng nhập</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-            <input type="text" name="pass" class="form-control" id="exampleInputPassword1">
-          </div>
+      <div style="margin-bottom: 20px;">
+    </div>
 
-          <input type="submit" class="btn btn-primary" name="dangky" value="Thêm mới">
+      <div class="card-body">
+      <form action="index.php?act=updatedh" method="post" >
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Khách hàng</label>
+            <input type="text" name="user" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['name_user']?>">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Địa chỉ</label>
+            <input type="text" name="address" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['address']?>">
+          </div>     
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Phone</label>
+            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['phone']?>">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1"  >Trạng thái</label> <br>
+                <select name="trangthai" id="" class="form-control" id="exampleInputPassword1">
+                    <option value="0" <?php echo $onebill['trangthai']==0?'selected':""?>>Chờ xác nhận</option>
+                    <option value="1" <?php echo $onebill['trangthai']==1?'selected':""?>>Chờ lấy hàng</option>
+                    <option value="2" <?php echo $onebill['trangthai']==2?'selected':""?>>Đang giao</option>
+                    <option value="3" <?php echo $onebill['trangthai']==1?'selected':""?>>Đã giao</option>
+
+                </select>
+          </div>
+          <input type="hidden" name="id" value="<?php echo $onebill['id_bill']?>">
+          <input type="submit" class="btn btn-primary" name="capnhat" value="Cập nhật">
           <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         </form>
-  
+
       </div>
     </div>
   </div>

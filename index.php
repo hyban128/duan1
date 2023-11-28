@@ -5,11 +5,13 @@ include "model/pdo.php";
 include "model/danhmuc.php";
 include "model/hanghoa.php";
 include "model/taikhoan.php";
+include "model/giohang.php";
 include "model/binhluan.php";
 include "model/sanphambt.php";
-include "model/giohang.php";
-if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
+include "model/blog.php";
 
+if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
+$blog=load_blog();
 $size=loadAll_size();
 $color=loadAll_color();
 $spnew=loadAll_view();/*goi ham ben model/sanpham */
@@ -363,6 +365,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $billchitiet=loadall_cart($idbill);
                 include "View/cart/billconfirm.php";
                 break;
+                
                 case 'camon':
                     if(isset($_POST['dathang'])&&$_POST['dathang']){
                         if(isset($_SESSION['taikhoan'])){
@@ -377,11 +380,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                             $pttt=$_POST['pttt'];
                             $ngaydathang=date('Y/m/d');
                             $tongdonhang=tongdonhang();
-                            $idbill= insert_bill($iduser,$name,$email,$address,$phone,$pttt,$ngaydathang,$tongdonhang);
-                            //insert into cart :lay du lieu session va $idbill
-                            //Cap nhap vo gio hang(tao gio hang)
+                            $idbill=insert_bill($iduser,$name,$email,$address,$phone,$pttt,$ngaydathang,$tongdonhang);
+                            
                             foreach($_SESSION['cart'] as $cart){
-                                insert_cart($_SESSION['taikhoan']['id_user'],$cart['0'],$cart['2'],$cart['1'],$cart['3'],$cart['4'],$cart['5'],$cart['6'],$cart['7'],$idbill);                     
+                         insert_cart($_SESSION['taikhoan']['id_user'],$cart['0'],$cart['2'],$cart['1'],$cart['3'],$cart['4'],$cart['5'],$cart['6'],$cart['7'],$idbill);                     
                             }
                             //xoa session
                                 $_SESSION['cart']=[];                    
@@ -404,7 +406,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 }
                 include "View/taikhoan/ctdonhang.php";
                 break;
-            /*THONG KE */
+          
            
         default:
             include "View/home.php";

@@ -47,6 +47,12 @@ include("boxtrai.php");
                   <li><a href="index.php?act=dsbl">Danh sách</a></li>
               </ul>
               </li>
+              <li class="list-group-item">Blog
+              <ul>
+                  <li><a href="index.php?act=addblog">Thêm mới</a></li>
+                  <li><a href="index.php?act=dsblog">Danh sách</a></li>
+              </ul>
+              </li>
               <li class="list-group-item">Đơn hàng</li>
               <li class="list-group-item">Thống kê</li>
 
