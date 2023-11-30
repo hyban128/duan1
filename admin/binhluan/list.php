@@ -13,44 +13,64 @@ include("boxtrai.php");
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
+         
           <ul class="list-group">
-              <!-- <li class="list-group-item active"></li> -->
 
 
 
-              <li class="list-group-item">Danh mục
-              <ul>
-                <li><a href="index.php?act=adddm">Thêm mới</a></li>
-                  <li><a href="index.php?act=listdm">Danh sách</a></li>
-                </ul>
-            </li>
-              <li class="list-group-item">Hàng hóa
-              <ul>
-                  <li><a href="index.php?act=addhh">Thêm mới</a></li>
-                  <li><a href="index.php?act=listhh">Danh sách</a></li>
-                </ul>
-              </li>
-              <li class="list-group-item">Sản phẩm
-              <ul>
-                  <li><a href="index.php?act=addspbt">Thêm mới</a></li>
-                  <li><a href="index.php?act=listspbt">Danh sách</a></li>
-                </ul>
-              </li>
-              <li class="list-group-item">Tài khoản
-                <ul>
-                  <li><a href="index.php?act=addtk">Thêm mới</a></li>
-                  <li><a href="index.php?act=listtk">Danh sách</a></li>
-                </ul>
-              </li>
-              <li class="list-group-item">Bình luận
-              <ul>
-                  <li><a href="index.php?act=dsbl">Danh sách</a></li>
-              </ul>
-              </li>
-              <li class="list-group-item">Đơn hàng</li>
-              <li class="list-group-item">Thống kê</li>
+<li class="list-group-item">Danh mục
+  <ul>
+    <li><a href="index.php?act=adddm">Thêm mới</a></li>
+    <li><a href="index.php?act=listdm">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Hàng hóa
+  <ul>
+    <li><a href="index.php?act=addhh">Thêm mới</a></li>
+    <li><a href="index.php?act=listhh">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Sản phẩm
+  <ul>
+    <li><a href="index.php?act=addspbt">Thêm mới</a></li>
+    <li><a href="index.php?act=listspbt">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Tài khoản
+  <ul>
+    <li><a href="index.php?act=addtk">Thêm mới</a></li>
+    <li><a href="index.php?act=listtk">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Bình luận
+  <ul>
+    <li><a href="index.php?act=dsbl">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Blog
+  <ul>
+    <li><a href="index.php?act=addblog">Thêm mới</a></li>
+    <li><a href="index.php?act=dsblog">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Đơn hàng
+<ul>
+  <li><a href="index.php?act=dsgh">Danh sách</a></li>
+</ul>
+</li>
 
-            </ul>
+<li class="list-group-item">Thống kê
+
+  <ul>
+    <li><a href="index.php?act=dstk">Danh sách</a></li>
+  </ul>
+</li>
+
+</ul>
+
+
+  
+   
           </div>
         </div>
       </div>

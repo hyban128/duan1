@@ -1,15 +1,15 @@
 <?php
-// function loadAll_binhluan(){
-//     $sql="SELECT binhluan.*,sanpham.name,taikhoan.user from binhluan 
-//     inner join taikhoan on binhluan.id_user=taikhoan.id_user
-//     inner join sanpham on binhluan.id_sp =sanpham.id_pro";
-//     $result=pdo_query($sql);
-//     return $result;
-// }
+function load_twobl($id){
+    $sql="SELECT binhluan.noidung,binhluan.ngaybl,taikhoan.user,taikhoan.avata from binhluan 
+    inner join taikhoan on binhluan.id_user=taikhoan.id_user
+    inner join sanpham on binhluan.id_sp =sanpham.id_pro where sanpham.id_pro='$id' order by binhluan.id_bl desc limit 0,2";
+    $result=pdo_query($sql);
+    return $result;
+}
 function load_binhluan($id){
     $sql="SELECT binhluan.noidung,binhluan.ngaybl,taikhoan.user,taikhoan.avata from binhluan 
     inner join taikhoan on binhluan.id_user=taikhoan.id_user
-    inner join sanpham on binhluan.id_sp =sanpham.id_pro where sanpham.id_pro='$id'";
+    inner join sanpham on binhluan.id_sp =sanpham.id_pro where sanpham.id_pro='$id' order by binhluan.id_bl desc";
     $result=pdo_query($sql);
     return $result;
 }

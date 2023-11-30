@@ -19,19 +19,19 @@ include("boxtrai.php");
 
 
               <li class="list-group-item">Danh mục
-              <ul>
-                <li><a href="index.php?act=adddm">Thêm mới</a></li>
+                <ul>
+                  <li><a href="index.php?act=adddm">Thêm mới</a></li>
                   <li><a href="index.php?act=listdm">Danh sách</a></li>
                 </ul>
-            </li>
+              </li>
               <li class="list-group-item">Hàng hóa
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addhh">Thêm mới</a></li>
                   <li><a href="index.php?act=listhh">Danh sách</a></li>
                 </ul>
               </li>
               <li class="list-group-item">Sản phẩm
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addspbt">Thêm mới</a></li>
                   <li><a href="index.php?act=listspbt">Danh sách</a></li>
                 </ul>
@@ -43,14 +43,30 @@ include("boxtrai.php");
                 </ul>
               </li>
               <li class="list-group-item">Bình luận
-              <ul>
+                <ul>
                   <li><a href="index.php?act=dsbl">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Blog
+                <ul>
+                  <li><a href="index.php?act=addblog">Thêm mới</a></li>
+                  <li><a href="index.php?act=dsblog">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Đơn hàng
+              <ul>
+                <li><a href="index.php?act=dsgh">Danh sách</a></li>
               </ul>
               </li>
-              <li class="list-group-item">Đơn hàng</li>
-              <li class="list-group-item">Thống kê</li>
+              
+              <li class="list-group-item">Thống kê
 
-            </ul>
+                <ul>
+                  <li><a href="index.php?act=dstk">Danh sách</a></li>
+                </ul>
+              </li>
+
+           
           </div>
         </div>
       </div>

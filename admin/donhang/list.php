@@ -19,19 +19,19 @@ include("boxtrai.php");
 
 
               <li class="list-group-item">Danh mục
-              <ul>
-                <li><a href="index.php?act=adddm">Thêm mới</a></li>
+                <ul>
+                  <li><a href="index.php?act=adddm">Thêm mới</a></li>
                   <li><a href="index.php?act=listdm">Danh sách</a></li>
                 </ul>
-            </li>
+              </li>
               <li class="list-group-item">Hàng hóa
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addhh">Thêm mới</a></li>
                   <li><a href="index.php?act=listhh">Danh sách</a></li>
                 </ul>
               </li>
               <li class="list-group-item">Sản phẩm
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addspbt">Thêm mới</a></li>
                   <li><a href="index.php?act=listspbt">Danh sách</a></li>
                 </ul>
@@ -43,14 +43,30 @@ include("boxtrai.php");
                 </ul>
               </li>
               <li class="list-group-item">Bình luận
-              <ul>
+                <ul>
                   <li><a href="index.php?act=dsbl">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Blog
+                <ul>
+                  <li><a href="index.php?act=addblog">Thêm mới</a></li>
+                  <li><a href="index.php?act=dsblog">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Đơn hàng
+              <ul>
+                <li><a href="index.php?act=dsgh">Danh sách</a></li>
               </ul>
               </li>
-              <li class="list-group-item">Đơn hàng</li>
-              <li class="list-group-item">Thống kê</li>
+              
+              <li class="list-group-item">Thống kê
 
-            </ul>
+                <ul>
+                  <li><a href="index.php?act=dstk">Danh sách</a></li>
+                </ul>
+              </li>
+
+          
           </div>
         </div>
       </div>
@@ -64,7 +80,19 @@ include("boxtrai.php");
       <div class="card-header">
         <h4>Quản lý giỏ hàng</h4>
       </div>
+      
       <div class="card-body">
+ 
+<ul class="locgiohang" style="display: flex;list-style: none;justify-content: center;color: #BB0;background: antiquewhite;padding: 0;">
+<li ><a  style="font-weight: 700; color: #000;" class="dropdown-item" href="index.php?act=dsgh" >Tất cả</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=cxn">Chờ xác nhận</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=clh">Chờ lấy hàng</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=danggiao">Đang giao</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=dagiao">Đã giao</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=ch">Chờ hủy</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=dh">Đã hủy</a></li>
+</ul>
+
       <table class="table" align="center">
   <thead class="table-light">
     <tr align="center">
@@ -94,7 +122,7 @@ include("boxtrai.php");
       <td><?php echo $gh['phone']?></td>
       <td><?php echo $soluong?></td>
       <td><?php echo $gh['tongtien']?></td>
-      <td><?php echo 'chi tiết để đấy'?></td>
+      <td><a href="index.php?act=chitietbill&id=<?php echo $gh['id_bill']?>">Xem chi tiết</a></td>
       <td><?php echo $trangthai?></td>
 
       

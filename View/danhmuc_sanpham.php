@@ -45,7 +45,7 @@
   </a>
 
   <ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="index.php?act=tren300">Tất cả</a></li>
+  <li><a class="dropdown-item" href="">Tất cả</a></li>
 
     <li><a class="dropdown-item" href="index.php?act=tren300">Trên 300</a></li>
     <li><a class="dropdown-item" href="index.php?act=100den200">Từ 100 đến 300</a></li>

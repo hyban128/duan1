@@ -14,7 +14,6 @@ include("boxtrai.php");
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
           <ul class="list-group">
-              <!-- <li class="list-group-item active"></li> -->
 
 
 
@@ -66,6 +65,9 @@ include("boxtrai.php");
                 </ul>
               </li>
 
+            </ul>
+  
+
           
           </div>
         </div>
@@ -78,52 +80,39 @@ include("boxtrai.php");
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>Cập nhật hàng hóa</h4>
+        <h4>Chi tiết bình luận</h4>
       </div>
-      <div style="margin-bottom: 20px;">
-    </div>
-
       <div class="card-body">
-      <form action="index.php?act=updatehh" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-                        <select name="iddm" id="" class="form-control" id="exampleInputPassword1">
-                        <?php foreach($danhmuc as $dm): ?>
-                    <option value="<?php echo $dm['id_dm']?>" <?php echo $dm['id_dm']==$sanpham['iddm']?'selected':""?>><?php echo $dm['name']?></option>
-                    <?php endforeach ?>
-                        </select>
-        </div>
-                      
+      <table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Ảnh sản phẩm</th>
+      <th scope="col">Tên </th>
+      <th scope="col">Giá</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">Color</th>
+      <th scope="col">Size</th>
+      <th scope="col">Tiền</th>
+      <th scope="col">Chức năng</th>
 
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên sản phẩm</label>
-            <input type="text" name="tensp" class="form-control" id="exampleInputPassword1" value="<?php echo $sanpham['name']?>">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Giá sản phẩm</label>
-            <input type="text" name="giasp" class="form-control" id="exampleInputPassword1" value="<?php echo $sanpham['price']?>">
-          </div>
-          <!-- <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Giảm giá</label>
-            <input type=text" name="giamgia" class="form-control" id="exampleInputPassword1" value="<?php echo $sanpham['discount']?>">
-          </div> -->
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Ảnh sản phẩm</label> <br>
-            <input type="file" name="image" class="form-control" id="exampleInputPassword1">
-
-            <img style="width: 100px;margin-top: 15px;" src="../upload/<?php echo $sanpham['img']?>" alt="">
-          </div>
-         
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Thông tin sản phẩm</label>
-            <textarea name="mota" id="" cols="30" rows="10" class="form-control" id="exampleInputPassword1"><?php echo $sanpham['mota']?>  </textarea>
-          
-          
-          </div>
-          <input type="hidden" name="id" value="<?php echo $sanpham['id_pro']?>">
-          <input type="submit" class="btn btn-primary" name="capnhat" value="Cập nhật">
-          <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
-          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </form>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+   foreach( $chitietdh as $ct):?>
+    <tr>
+    <td> <img style="width: 78px;height: 70px;" src="../upload/<?php echo $ct['img_sp']?>" alt=""></td>
+              <td><?php echo $ct['tensp']?></td>
+              <td><?php echo $ct['price']?></td>
+              <td><?php echo $ct['soluong']?></td>
+              <td><?php echo $ct['color']==3?'Trắng':'Đen'?> </td>
+              <td> <?php echo $ct['size']==3?'M':'S'?></td>
+              <td> <?php echo $ct['thanhtien']?></td>
+              <td><a href="index.php?act=dsgh">Quay lại</a></td>
+    </tr>
+   <?php endforeach?>
+  </tbody>
+</table>
 
       </div>
     </div>

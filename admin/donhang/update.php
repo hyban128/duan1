@@ -19,19 +19,19 @@ include("boxtrai.php");
 
 
               <li class="list-group-item">Danh mục
-              <ul>
-                <li><a href="index.php?act=adddm">Thêm mới</a></li>
+                <ul>
+                  <li><a href="index.php?act=adddm">Thêm mới</a></li>
                   <li><a href="index.php?act=listdm">Danh sách</a></li>
                 </ul>
-            </li>
+              </li>
               <li class="list-group-item">Hàng hóa
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addhh">Thêm mới</a></li>
                   <li><a href="index.php?act=listhh">Danh sách</a></li>
                 </ul>
               </li>
               <li class="list-group-item">Sản phẩm
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addspbt">Thêm mới</a></li>
                   <li><a href="index.php?act=listspbt">Danh sách</a></li>
                 </ul>
@@ -43,14 +43,30 @@ include("boxtrai.php");
                 </ul>
               </li>
               <li class="list-group-item">Bình luận
-              <ul>
+                <ul>
                   <li><a href="index.php?act=dsbl">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Blog
+                <ul>
+                  <li><a href="index.php?act=addblog">Thêm mới</a></li>
+                  <li><a href="index.php?act=dsblog">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Đơn hàng
+              <ul>
+                <li><a href="index.php?act=dsgh">Danh sách</a></li>
               </ul>
               </li>
-              <li class="list-group-item">Đơn hàng</li>
-              <li class="list-group-item">Thống kê</li>
+              
+              <li class="list-group-item">Thống kê
 
-            </ul>
+                <ul>
+                  <li><a href="index.php?act=dstk">Danh sách</a></li>
+                </ul>
+              </li>
+
+            
           </div>
         </div>
       </div>
@@ -84,10 +100,28 @@ include("boxtrai.php");
           <div class="mb-3">
             <label for="exampleInputPassword1"  >Trạng thái</label> <br>
                 <select name="trangthai" id="" class="form-control" id="exampleInputPassword1">
-                    <option value="0" <?php echo $onebill['trangthai']==0?'selected':""?>>Chờ xác nhận</option>
+                   
+                    <?php 
+                     if($onebill['trangthai']==0){?>
+                     <option value="0" <?php echo $onebill['trangthai']==0?'selected':""?>>Chờ xác nhận</option>
                     <option value="1" <?php echo $onebill['trangthai']==1?'selected':""?>>Chờ lấy hàng</option>
+                    
+                    <?php }else if($onebill['trangthai']==1){?>
+                      <option value="1" <?php echo $onebill['trangthai']==1?'selected':""?>>Chờ lấy hàng</option>
                     <option value="2" <?php echo $onebill['trangthai']==2?'selected':""?>>Đang giao</option>
-                    <option value="3" <?php echo $onebill['trangthai']==1?'selected':""?>>Đã giao</option>
+                     <?php }else if($onebill['trangthai']==2){ ?>
+                      <option value="2" <?php echo $onebill['trangthai']==2?'selected':""?>>Đang giao</option>
+                    <option value="3" <?php echo $onebill['trangthai']==3?'selected':""?>>Đã giao</option>
+                     <?php }else if($onebill['trangthai']==4){ ?>
+                      <option value="4" <?php echo $onebill['trangthai']==5?'selected':""?>>Chờ hủy</option>
+                      <option value="5" <?php echo $onebill['trangthai']==5?'selected':""?>>Đã hủy</option>
+                    <?php }else{ ?>
+
+                    <?php }
+
+                  
+                    ?>
+                    
 
                 </select>
           </div>

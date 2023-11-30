@@ -1,4 +1,8 @@
-
+<?php 
+if(empty($_SESSION['cart'])){
+    header("location:index.php?act=giohang");
+}
+?>
 <div class="cart-box-main">
             <div class="container">
                 <div class="row">

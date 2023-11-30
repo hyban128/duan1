@@ -36,50 +36,12 @@ if (isset($spbt_sp)) {
                         <i class="fa fa-quote-left"></i>
                         <p><?php echo $mota ?></p>
                     </div>
-                    <!-- <div class="quantity-content">
-                        <div class="left-content" >
-                            <h6 style="padding-top: 0;">Chọn Màu</h6>
-                        </div>
-                        <div class="right-content">
-
-
-                            <select style="width: 50%; display: inline-block;" name="color" id="" class="form-select" aria-label="Default select example">
-                            <?php foreach ($color as $c) : ?>
-                                <option value="<?php echo $c['id_color'] ?>"><?php echo $c['color'] ?></option>
-                               <?php endforeach ?>
-                            </select>
-                        </div>
-                    </div> -->
-                    <!-- <div class="quantity-content">
-                        <div class="left-content">
-                            <h6>Chọn Size</h6>
-                        </div>
-                        <div class="right-content">
-                            <select name="size" id="Size">
-                                <?php foreach ($size as $s) : ?>
-                                <option value="<?php echo $s['id_size'] ?>"><?php echo $s['size'] ?></option>
-                                <?php endforeach ?>
-                               
-                            </select>
-                        </div>
-                    </div> -->
-                    <!-- <div class="quantity-content">
-                        <div class="left-content">
-                            <h6 style="padding-top: 0;">Số Lượng</h6>
-                        </div>
-                        <div class="right-content">
-                            <div class="quantity buttons_added">
-
-                                <input style="text-align: center;" type="number" value="1" id="quantity" name="quantity" min="1" max="5">
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="total">
                         <!-- <h4>Thành Tiền:450000d</h4> -->
                         <div class="main-border-button">
-                            <?php if($spbt){?>
-                                <form action="index.php?act=addcart" class="themgiohang" method="post">
-                                <input type="hidden" name="id" value="<?php echo $id_pro ?>">
+
+                            <form action="index.php?act=addcart" class="themgiohang" method="post">
+                                <input type="hidden" name="id" id="idsp" value="<?php echo $id_pro ?>">
                                 <input type="hidden" name="name" value="<?php echo $name ?>">
                                 <input type="hidden" name="img" value="<?php echo $img ?>">
                                 <div class="quantity-content">
@@ -87,12 +49,10 @@ if (isset($spbt_sp)) {
                                         <h6 style="padding-top: 0;">Chọn Màu</h6>
                                     </div>
                                     <div class="right-content">
+                                        <select style="width: 50%; display: inline-block;" name="color" id="idcolor" class="form-select" aria-label="Default select example">
+                                            <?php foreach ($spbt_color as $c) : ?>
 
-
-                                        <select style="width: 50%; display: inline-block;" name="color" id="" class="form-select" aria-label="Default select example">
-                                            <?php foreach ($spbt as $c) : ?>
-
-                                                <option value="<?php echo $c['id_color'] ?>" > <?php echo $c['color'] ?></option>
+                                                <option value="<?php echo $c['id_color'] ?>"> <?php echo $c['color'] ?></option>
                                             <?php endforeach ?>
 
                                         </select>
@@ -104,8 +64,8 @@ if (isset($spbt_sp)) {
                                         <h6>Chọn Size</h6>
                                     </div>
                                     <div class="right-content">
-                                        <select name="size" id="Size">
-                                            <?php foreach ($spbt as $s) : ?>
+                                        <select style="width: 50%; display: inline-block;" name="size" id="idsize" class="form-select">
+                                            <?php foreach ($spbt_size as $s) : ?>
                                                 <option value="<?php echo $s['id_size'] ?>"><?php echo $s['size'] ?></option>
                                             <?php endforeach ?>
 
@@ -117,10 +77,10 @@ if (isset($spbt_sp)) {
                                     <div class="left-content">
                                         <h6 style="padding-top: 0;">Số Lượng</h6>
                                     </div>
+                                  
                                     <div class="right-content">
                                         <div class="quantity buttons_added">
-
-                                            <input style="text-align: center;" type="number" value="1" id="quantity" name="soluong" min="1" max="5">
+                                            <input style="text-align: center;" type="number" value="1" id="quantity" name="soluong" min="1" max="5" >
                                         </div>
                                     </div>
                                 </div>
@@ -129,26 +89,14 @@ if (isset($spbt_sp)) {
 
 
 
+                                <span id="soluongsp"></span>
 
                                 <input style="padding: 5px;background: mediumvioletred;border: 1px solid #ccc;color: #fff;" type="submit" name="addcart" value="Thêm giỏ hàng">
                             </form>
-                          <?php }else{ ?>
-                            <form action="index.php?act=addcart" class="themgiohang" method="post">
-                                <input type="hidden" name="id" value="<?php echo $id_pro ?>">
-                                <input type="hidden" name="name" value="<?php echo $name ?>">
-                                <input type="hidden" name="img" value="<?php echo $img ?>">
-                                <div class="quantity-content">
-                        
-                                            <input style="text-align: center;" type="number" value="1" id="quantity" name="soluong" min="1" max="5">
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="price" value="<?php echo $price - (($price * $discount) / 100) ?>">
-                                <input style="padding: 5px;background: mediumvioletred;border: 1px solid #ccc; color: #fff;float: right;" type="submit" name="addcart" value="Thêm giỏ hàng">
-                            </form>
-                          <?php } ?>
-                            
-                            
+
+
+
+
 
                         </div>
                     </div>
@@ -169,51 +117,63 @@ if (isset($spbt_sp)) {
 
                                         <input style="padding: 5px;margin-bottom: 15px;width: 50%;" type="text" name="noidung" id="review">
                                     </div>
-                                    <input style="width: 15%; margin-bottom: 50px;" type="submit" value="Xác nhận" class="btn-cmt" name="guibinhluan">
-                                    <!-- <button onclick="submitReview()" class="btn-cmt" name="guibinhluan">Gửi bình luận</button>  -->
-                                    <span><?php if (isset($err['noidung'])) {
-                                                echo $err['noidung'];
-                                            } ?></span>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button style="padding: 5px 7px; background: black;margin-bottom: 20px;" type="submit" id="form-submit" class="main-dark-button" name="guibinhluan"><i style="color: #fff;" class="fa fa-paper-plane"></i></button>
+                                            <fieldset>
+
+                                    </div>
+
+
+                                    <?php if (isset($err['noidung'])) : ?>
+                                        <span style="color: red;"><?php echo $err['noidung'] ?></span>
+                                    <?php endif ?>
 
                                 </form>
                             </div>
                         <?php } else { ?>
                             <p style="color: red; font-size: 15px;padding-left: 20px;"> <a style="color: red;" href="index.php?act=dangnhap">Vui lòng đăng nhập</a></p>
                         <?php } ?>
-                        <!-- <textarea id="review"></textarea>
-                    <button onclick="submitReview()" class="btn-cmt">Gửi bình luận</button> -->
                     </div>
-                    <div id="reviews-container">
-                    </div>
+                    
                 </div>
+               
             </div>
-            <div class="container">
+            <div class="input-comment">
+                    <div class="search">
+                        <?php 
+                        if(isset($binhluan)){ ?>
 
-          
-            <div class="comment">
+                       <?php }else{ ?>
 
-                <div class="" style="margin-top: 0;">
-
-                    <?php foreach ($binhluan as $bl) : ?>
-                        <div class="" style=" padding: 10px 15px;border: 1px solid #ccc;">
-
-
-                            <div style="display: flex;flex-direction: row;">
-                                <img src="upload/<?php echo !isset($bl['avata']) || empty($bl['avata']) ? 'anh (2).jpg' : $bl['avata'] ?>" alt="User Avatar" class="avatar">
-
-                                <h6 style="line-height: 50px;"><?php echo $bl['user'] ?></h6>
-
-                            </div>
-
-                            <p><?php echo $bl['noidung'] ?></p>
-                            <p style="font-size: 10px ;opacity: 0.5;"><?php echo  date("d/m/Y", strtotime($bl['ngaybl'])) ?></p>
+                       <?php }
+                        ?>
+                        <div class="" style="margin-top: 0;">
+                        
+                            <?php foreach ($binhluan as $bl) : ?>
+                                <div  style=" padding: 10px 15px;border: 1px solid #ccc;width: 96%;">
+                                    <div style="display: flex;flex-direction: row;">
+                                        <img src="upload/<?php echo !isset($bl['avata']) || empty($bl['avata']) ? 'anh (2).jpg' : $bl['avata'] ?>" alt="User Avatar" class="avatar">
+                                        <h6 style="line-height: 50px;"><?php echo $bl['user'] ?></h6>
+                                    </div>
+                                    <p><?php echo $bl['noidung'] ?></p>
+                                    <p style="font-size: 10px ;opacity: 0.5;"><?php echo  date("d/m/Y", strtotime($bl['ngaybl'])) ?></p>
+                                </div>
                         </div>
+                
+                    <?php endforeach ?>
+                                   <?php 
+                                      if($binhluan){
+                                        if(isset($_GET['full'])){?>
+                                            <a  href="index.php?act=chitietsp&idsp=<?php echo $onesp['id_pro']?>"><img style="width: 20px;background-image: #ccc;opacity: 0.5;" src="upload/arrow-up.png" alt=""></a>
+                                          <?php }else{ ?>
+                                            <a  href="index.php?act=chitietsp&idsp=<?php echo $onesp['id_pro']?>&full"> <img style="width: 20px;background-image: #ccc;opacity: 0.5;" src="upload/down-filled-triangular-arrow.png" alt=""></a>
+                                         <?php  }
+                                      }
+                                      
+                                   ?>
+                    </div>
                 </div>
-
-            <?php endforeach ?>
-
-            </div>
-            </div>
             <section class="section" id="men">
                 <div class="container">
                     <div class="row">
@@ -229,33 +189,33 @@ if (isset($spbt_sp)) {
                         <div class="col-lg-12">
                             <div class="men-item-carousel">
                                 <div class="owl-men-item owl-carousel">
-                                 <?php foreach($sp_cungloai as $sp):?>
-                                    <div class="item">
-                                        <div class="thumb">
-                                            <div class="hover-content">
-                                                <ul>
-                                                    <li><a href="index.php?act=chitietsp&idsp=<?php echo $sp['id_pro']?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                                </ul>
+                                    <?php foreach ($sp_cungloai as $sp) : ?>
+                                        <div class="item">
+                                            <div class="thumb">
+                                                <div class="hover-content">
+                                                    <ul>
+                                                        <li><a href="index.php?act=chitietsp&idsp=<?php echo $sp['id_pro'] ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <img src="upload/<?php echo $sp['img'] ?>" alt="">
                                             </div>
-                                            <img src="upload/<?php echo $sp['img']?>" alt="">
+                                            <div class="down-content">
+                                                <h4 style="text-align: center;"><?php echo $sp['name'] ?></h4>
+                                                <div class="nnn" style="    display: flex;justify-content: center;">
+                                                    <span style="text-decoration: line-through;">
+                                                        <?php echo number_format($sp['price']); ?> VNĐ
+                                                    </span>
+                                                    <span style="padding-left: 10px; font-weight: 500;color: red;">
+                                                        <?php
+                                                        $tt = $sp['price']  - (($sp['price'] * $sp['discount']) / 100);
+                                                        echo number_format($tt);
+                                                        ?> VNĐ
+                                                    </span>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                        <div class="down-content">
-                                            <h4 style="text-align: center;"><?php echo $sp['name']?></h4>
-                                            <div class="nnn" style="    display: flex;justify-content: center;">
-                                            <span style="text-decoration: line-through;">
-                                    <?php echo number_format($sp['price']); ?> VNĐ
-                                </span>
-                                            <span style="padding-left: 10px; font-weight: 500;color: red;">
-                                            <?php 
-                                        $tt = $sp['price']  - (($sp['price'] * $sp['discount']) / 100);
-                                        echo number_format($tt);
-                                    ?> VNĐ     
-                                    </span>    
-                                            </div>                                 
-                                        </div>
-                                        
-                                    </div>
-                           <?php endforeach ?>
+                                    <?php endforeach ?>
                                 </div>
                             </div>
                         </div>
@@ -265,3 +225,18 @@ if (isset($spbt_sp)) {
         </div>
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+               <script >
+                $(document).ready(function(){
+                  $('#idcolor').change(function(){
+                  var idcolor = $("#idcolor").val();
+                  var idsp= $("#idsp").val();
+                 
+                  $.post("soluong.php", {idcolor:idcolor, idsp:idsp},function(data){
+                 $("#soluongsp").html(data);
+                  })
+                 });
+                });
+                
+               </script>
+

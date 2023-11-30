@@ -19,19 +19,19 @@ include("boxtrai.php");
 
 
               <li class="list-group-item">Danh mục
-              <ul>
-                <li><a href="index.php?act=adddm">Thêm mới</a></li>
+                <ul>
+                  <li><a href="index.php?act=adddm">Thêm mới</a></li>
                   <li><a href="index.php?act=listdm">Danh sách</a></li>
                 </ul>
-            </li>
+              </li>
               <li class="list-group-item">Hàng hóa
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addhh">Thêm mới</a></li>
                   <li><a href="index.php?act=listhh">Danh sách</a></li>
                 </ul>
               </li>
               <li class="list-group-item">Sản phẩm
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addspbt">Thêm mới</a></li>
                   <li><a href="index.php?act=listspbt">Danh sách</a></li>
                 </ul>
@@ -43,24 +43,26 @@ include("boxtrai.php");
                 </ul>
               </li>
               <li class="list-group-item">Bình luận
-              <ul>
+                <ul>
                   <li><a href="index.php?act=dsbl">Danh sách</a></li>
-              </ul>
+                </ul>
               </li>
               <li class="list-group-item">Blog
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addblog">Thêm mới</a></li>
                   <li><a href="index.php?act=dsblog">Danh sách</a></li>
-              </ul>
+                </ul>
               </li>
-              <li class="list-group-item">Đơn hàng</li>
+              <li class="list-group-item">Đơn hàng
               <ul>
                 <li><a href="index.php?act=dsgh">Danh sách</a></li>
               </ul>
+              </li>
+              
               <li class="list-group-item">Thống kê
 
-                 <ul>
-                <li><a href="index.php?act=dstk">Danh sách</a></li>
+                <ul>
+                  <li><a href="index.php?act=dstk">Danh sách</a></li>
                 </ul>
               </li>
 
@@ -82,7 +84,7 @@ include("boxtrai.php");
         <form method="post" action="index.php?act=addtk">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" >
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Tên đăng nhập</label>
@@ -97,7 +99,7 @@ include("boxtrai.php");
           <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         </form>
-  
+
       </div>
     </div>
   </div>

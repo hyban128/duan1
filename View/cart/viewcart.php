@@ -27,11 +27,19 @@
                                     <th>Size</th>
                                     <th>Color</th>
                                     <th>Tổng Tiền</th>
-                                    <th>Xóa</th>
+                                    <th>Hành động</th>
+                                   
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                if(isset($_SESSION['cart'])){
+                                    extract($_SESSION['cart']);
+                                    print_r($_SESSION['cart']);
+                                }else{
+                                    echo "no";
+                                }
                                 $tong=0;
                                 $i=0; /*Xoa theo vi tri */
                                 foreach ($_SESSION['cart'] as $cart){
@@ -51,14 +59,18 @@
                                     <td class="price-pr">
                                         <p>'.$cart['3'].'</p>
                                     </td>
-                                    <td>
-                                    '.$cart['4'].'
+                                    <form action="?act=addcart" method="post">
+                                    <td style="width:130px">
+                                    <input style="text-align: center;  width: 30%; background: antiquewhite;border: 1px solid #ccc;" type="number" min="1" name="slcn" value="'.$cart['4'].'">
+                                    <input type="hidden" value="'.$cart[0].'" name="idsp">
+                                    <input type="hidden" value="'.$cart[5].'" name="idcolor">
+                                    <input type="hidden" value="'.$cart[6].'" name="idsize">
                                     </td>
                                     <td>
                                     <p>'.($cart['6']==3?'M':'S').'</p>
                                   </td>
                                   <td>
-                                    <p>'.($cart['5']==3?'Trang':'Den').'</p>
+                                    <p>'.($cart['5']==3?'Trắng':'Đen').'</p>
                                   </td>
                                     <td class="total-pr">
                                         <p>'.$cart['4']*$cart['3'].'</p>
@@ -68,8 +80,9 @@
                                         <a href="index.php?act=deletecart&idcart='.$i.'">
                                             <i class="fas fa-times"><input type="button"></i>
                                         </a>
+                                        <button style="border:none" name="btn-sb"><i class="fa-regular fa-pen-to-square" style="color: #5b8ce1;"></i></button>
                                     </td>
-                                  
+                                    </form>
                                 </tr>
                                 <tr>';
                                 $i+=1;
@@ -100,10 +113,9 @@ if(!isset($_SESSION['taikhoan'])){?>
                    
                     <?php
                     
-                    if(!$_SESSION['cart']){
+     if(!$_SESSION['cart']){
     echo'<h4 style="color:red;">Không có sản phẩm nào trong giỏ hàng quay lại để mua</h4>';
-// header("location:index.php");
- }
+    }
 
 
 ?>

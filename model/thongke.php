@@ -10,9 +10,9 @@ function thongke_sp_danhmuc() {
     $kq= pdo_query($sql);
     return $kq;
 }
-function load_tien_ngay(){
-   $sql="SELECT ngaydat as ngay ,SUM(tongtien) as tong from bill group by ngaydat;";
-   $kq= pdo_execute($sql);
-   return $kq;
-}
+// function load_tien_ngay(){
+//    $sql="SELECT ngaydat as ngay ,SUM(tongtien) as tong from bill group by ngaydat";
+//    $kq= pdo_execute($sql);
+//    return $kq;
+// }
 ?>

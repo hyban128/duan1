@@ -92,13 +92,25 @@
               <td><?php echo $count_sp?> </td>
               <td> <?php echo $bill['tongtien']?></td>
               <td><?php echo $ttdh?> </td>
-              <td><a href="index.php?act=chitietdonhang&idbill=<?php echo $bill['id_bill']?>">Xem chi tiết</a></td>
+            
+              <td style="display: flex;"><a style="margin: 0px 15px;" href="index.php?act=chitietdonhang&idbill=<?php echo $bill['id_bill']?>"><i style="color: red;" class="gg-browse"></i> </a>
+                 <?php 
+                         if($bill['trangthai']==0){?>
+                          <a onclick="return confirm('Bạn muốn hủy đơn hàng này?')" href="index.php?act=huydh&id=<?php echo $bill['id_bill']?>"><i class="fa fa-trash-o" style="font-size:23px"></i></a>
+
+                        <?php }else{ ?>
+                          <a  href="index.php?act=huydh&id=<?php echo $bill['id_bill']?>"><i class="fa fa-trash-o" style="font-size:23px"></i></a>
+
+                        <?php }
+                 ?>
+              </td>
           </tr>
           <?php endforeach ?>
            <?php }?>
    
   </tbody>
 </table>
+
       </div>
     </div>
   </div>

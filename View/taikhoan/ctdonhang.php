@@ -94,8 +94,8 @@
               <td><?php echo $ct['color']==3?'Trắng':'Đen'?> </td>
               <td> <?php echo $ct['size']==3?'M':'S'?></td>
               <td> <?php echo $ct['thanhtien']?></td>
-
-              <td><a href="index.php?act=mycart">Quay lại</a></td>
+              
+              <td style="padding: 0 25px;"><a href="index.php?act=mycart"><i class="fa fa-sign-out" style="font-size:24px;text-align: center;"></i></a></td>
           </tr>
           <?php endforeach ?>
            <?php }?>
