@@ -102,6 +102,13 @@
 
                             </tbody>
                         </table>
+                        <?php
+                 if(isset($_SESSION['soluongadd'])){
+                    echo $_SESSION['soluongadd'];
+                 }else{
+                    echo $_SESSION['soluongadd']="";
+                 }
+                        ?>
 <?php
 if(!isset($_SESSION['taikhoan'])){?>
     <span style="color: red;"><?php echo $_SESSION['thongbao'] ?></span>
@@ -119,6 +126,7 @@ if(!isset($_SESSION['taikhoan'])){?>
 
 
 ?>
+
                 </div>
             </div>
 

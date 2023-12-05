@@ -78,72 +78,49 @@ include("boxtrai.php");
     <!-- Nội dung trang -->
     <div class="card">
       <div class="card-header">
-        <h4>DANH SÁCH THỐNG KÊ </h4>
-      </div>
-      <div class="table_light">
-        <h4 style="text-align: center;font-size: 15px;border: 1px solid #ccc;margin: 10px;color: red;font-weight: 700; background: antiquewhite;padding: 5px 0px;">Thống kê sản phẩm theo danh mục</h4>
+        <h4>Thống kê </h4>
       </div>
       <div class="card-body">
-      <table class="table">
-  <thead class="table-light">
-    <tr>
-      <th scope="col">Tên loại</th>
-      <th scope="col">Số lượng</th>
-      <th scope="col">Giá nhỏ nhất</th>
-      <th scope="col">Giá cao nhất</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-   foreach($dsthongke as $ds):?>
-    <tr>
-    
-      <td><?php echo $ds['name']?></td>
-      <td><?php echo $ds['soluong']?></td>
-      <td><?php echo number_format($ds['gia_min']) .' VND'?></td>
-      <td><?php echo number_format($ds['gia_max']) .' VND'?></td>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<body>
+<div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
 
-     
-      
-    </tr>
-   <?php endforeach?>
-  </tbody>
-</table>
-           <a href="?act=bieudo"><input type="button" value="BIỂU ĐỒ"></a>
-      </div>
-      <div class="table_light">
-        <h4 style="text-align: center;font-size: 15px;border: 1px solid #ccc;margin: 10px;color: red;font-weight: 700; background: antiquewhite;padding: 5px 0px;">Thống kê doanh thu 5 tháng gần nhất</h4>
-      </div>
-    <!-- Thống kê thứ 2-->
-      <div class="card-body">
-      <table class="table">
-  <thead class="table-light">
-    <tr>
-     
-      <th scope="col">Tháng</th>
-      <th scope="col">Doanh thu</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <?php
+<script>
+google.charts.load('current',{packages:['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-   foreach($tien as $t):
-   
-   extract($t)?>
-
-    <tr>
-    
-      <td><?php echo $t['ngay']?></td>
-      <td><?php echo number_format($t['tong']) .' VND'?></td>      
-    </tr>
-   <?php endforeach?>
-  </tbody>
-</table>
-  <a href="index.php?act=bieudo2"><input type="button" value="BIỂU ĐỒ"></a>
+function drawChart() {
+// Set Data
+const data = google.visualization.arrayToDataTable([
+  ['Price', 'Size'],
+  <?php 
+  foreach($tien as $t){
+    extract($t);
+    echo "['$ngay',$tong],";
+  }
+  ?>
+ 
+ 
+]);
+// Set Options
+const options = {
+  title: 'Thống kê doanh thu 5 tháng gần nhất',
+  hAxis: {title: 'Tháng'},
+  vAxis: {title: 'Tiền'},
+  legend: 'none'
+};
+// Draw
+const chart = new google.visualization.LineChart(document.getElementById('myChart'));
+chart.draw(data, options);
+}
+</script>
       </div>
     </div>
   </div>
 </div>
 </div>
+           
+           
+
+
+

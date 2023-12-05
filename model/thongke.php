@@ -10,9 +10,14 @@ function thongke_sp_danhmuc() {
     $kq= pdo_query($sql);
     return $kq;
 }
-// function load_tien_ngay(){
-//    $sql="SELECT ngaydat as ngay ,SUM(tongtien) as tong from bill group by ngaydat";
-//    $kq= pdo_execute($sql);
-//    return $kq;
-// }
+function load_tien_ngay(){
+   $sql="SELECT MONTH(ngaydat) AS ngay, SUM(tongtien) AS tong 
+   FROM bill 
+   WHERE trangthai = 4 
+   GROUP BY ngay 
+   ORDER BY ngay asc
+   LIMIT 5";
+ $kq= pdo_query($sql);
+ return $kq;
+}
 ?>

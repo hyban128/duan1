@@ -40,9 +40,7 @@
             </div>
                          <li>
                          <div class="dropdown" style="margin-bottom: 10px;">
-  <a style="width: 15%;background-color: #e9ecef;color: #000;" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Giá
-  </a>
+  <a style="width: 15%;background-color: #e9ecef;color: #000;" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Giá</a>
 
   <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="">Tất cả</a></li>

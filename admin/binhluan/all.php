@@ -85,35 +85,43 @@ include("boxtrai.php");
         <h4>Danh sách bình luận</h4>
       </div>
       <ul class="locgiohang" style="display: flex;list-style: none;justify-content: center;color: #BB0;background: antiquewhite;padding: 0;">
-<li ><a  style="font-weight: 700; color: #000;" class="dropdown-item" href="index.php?act=dsbl" >Tất cả</a></li>
+<li ><a  style="font-weight: 700; color: #000;" class="dropdown-item" href="index.php?act=dsbl">Trang chủ</a></li>
 <li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=dsbl_daduyet">Đã duyệt</a></li>
-<li style="padding: 0px 5px;"><a class="dropdown-item" href="index.php?act=dsbl_chuaduyet">Chưa duyệt</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=dsbl_chuaduyet">Chưa duyệt</a></li>
+
+
 </ul>
-    
       <div class="card-body">
       <table class="table">
   <thead class="table-light">
     <tr>
-      <th scope="col">ID</th>
-      <!-- <th scope="col">User</th> -->
+      <th scope="col">User</th>
       <th scope="col">Product </th>
-      <!-- <th scope="col">Nội dung</th> -->
+      <th scope="col">Nội dung</th>
       <th scope="col">Ngày bình luận</th>
       <th scope="col">Chức năng</th>
     </tr>
   </thead>
   <tbody>
     <?php
-    
-   foreach($binhluan as $bl):?>
+   foreach($bl_dd as $bl):?>
     <tr>
-      <td><?php echo $bl['idpro']?></td>
-    
-      <td><?php echo $bl['tensp']?></td>
+    <td><?php echo $bl['user']?></td>
+
+      <td><?php echo $bl['name']?></td>
+      <td><?php echo $bl['noidung']?></td>
+
       <td><?php echo date("d/m/Y", strtotime($bl['ngaybl']))?></td>
       <td style="display: flex; flex-direction: row;">
-            <!-- <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoabl&id=<?php echo $bl['idpro']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a>  -->
-            <a style="text-decoration: none; cursor: pointer;" href="index.php?act=chitietbl&idpro=<?php echo $bl['idpro']?>">Xem bình luận</a>
+      <?php 
+         if($bl['check_bl']==0){?>
+            <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoabl&id=<?php echo $bl['id_bl']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a> 
+            <a  href="index.php?act=duyetbl&id=<?php echo $bl['id_bl']?>"><input  style="color: red;margin-left: 10px;" class="btn btn-primary "type="button" value="Duyệt"></a> 
+        <?php }else{ ?>
+            <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoabl&id=<?php echo $bl['id_bl']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a> 
+        <?php }
+      ?>
+     
     </td>
     </tr>
    <?php endforeach?>

@@ -85,14 +85,16 @@ include("boxtrai.php");
   <thead class="table-light">
     <tr>
       <th scope="col">Mã </th>
-      <th scope="col">Tên </th>
-      <th scope="col">Mật khẩu </th>
+      <th scope="col">Name </th>
+      <th scope="col">Pass </th>
       <th scope="col">Email</th>
       <th scope="col">Avata</th>
       <th scope="col">Address</th>
       <th scope="col">Phone</th>
       <th scope="col">Vai trò</th>
-      <th  style="padding-left: 40px;" scope="col">Chức năng</th>
+      <th scope="col">Trạng thái</th>
+
+      <th  style="padding-left: 40px;text-align: center;" scope="col">Chức năng</th>
     </tr>
   </thead>
   <tbody>
@@ -106,18 +108,40 @@ include("boxtrai.php");
       <td><?php echo $tk['email']?></td>
       <td>
         
-      <img width="80px" src="../upload/<?php echo !isset($tk['avata'])||empty($tk['avata'])?'anh (2).jpg':$tk['avata']?>" alt="">
+      <img width="70px" src="../upload/<?php echo !isset($tk['avata'])||empty($tk['avata'])?'anh (2).jpg':$tk['avata']?>" alt="">
  
     </td>
       <td><?php echo $tk['address']?></td>
       <td><?php echo $tk['phone']?></td>
       <td><?php echo $tk['role']==1?'ADMIN':'USER'?></td>
       
-      <td style="display: flex; flex-direction: row;">
+      <td><?php echo $tk['trangthai']==0?'Hoạt động':'Khóa'?></td>
+ 
+      <?php
+         if($tk['role']==0){?>
+          <td style="display: flex; flex-direction: row;">
           
-            <a href="index.php?act=suatk&id=<?php echo $tk['id_user']?>"><input style="margin: 0px 10px;color: blue;" class="btn btn-primary "type="button" value="Sửa"></a> 
-            <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoatk&id=<?php echo $tk['id_user']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a> 
-    </td>
+          <a href="index.php?act=suatk&id=<?php echo $tk['id_user']?>"><input style="margin: 0px 10px;color: blue;" class="btn btn-primary "type="button" value="Sửa"></a> 
+          <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoatk&id=<?php echo $tk['id_user']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a> 
+          <?php
+                       if($tk['trangthai']==0){?>
+                        <a href="index.php?act=khoatk&id=<?php echo $tk['id_user']?>" class="btn btn-info" style="margin-left: 5px;">Khóa</a>
+
+                      <?php }else{ ?>
+                        <a href="index.php?act=motk&id=<?php echo $tk['id_user']?>" class="btn btn-info" style="margin-left: 5px;">Mở</a>
+
+                     <?php }
+          ?>
+  </td>
+        <?php }else{ ?>
+<td>
+<a href="index.php?act=suatk&id=<?php echo $tk['id_user']?>"><input style="margin: 0px 10px;color: blue;" class="btn btn-primary "type="button" value="Sửa"></a> 
+<a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoatk&id=<?php echo $tk['id_user']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a> 
+
+</td>
+      <?php  }
+      ?>
+     
     </tr>
    <?php endforeach?>
   </tbody>

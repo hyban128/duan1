@@ -198,6 +198,24 @@ if (isset($_GET['act'])) {
             }
             include("taikhoan/list.php");
             break;
+        case 'khoatk':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                $khoa=khoatk($id);
+            }
+            $taikhoan = loadAll_taikhoan();
+
+            include "taikhoan/list.php";
+            break;
+        case 'motk':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                $mo=motk($id);
+            }
+            $taikhoan = loadAll_taikhoan();
+
+            include "taikhoan/list.php";
+            break;
             /*Binh luan */
         case 'dsbl':
             $binhluan = loadbl_sanphan();
@@ -210,6 +228,22 @@ if (isset($_GET['act'])) {
                 include "binhluan/chitietbl.php";
             }
 
+            break;
+        case 'dsbl_daduyet':
+           $bl_dd= loadbl_daduyet();
+            include "binhluan/all.php";
+            break;
+        case 'dsbl_chuaduyet':
+           $bl_dd= loadbl_chuaduyet();
+            include "binhluan/all.php";
+            break;
+        case 'duyetbl':
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+               $bl_dd= duyetbl($id);
+               header("location:index.php?act=dsbl_daduyet");
+            }
+            include "binhluan/all.php";
             break;
         case 'xoabl':
             if (isset($_GET['id'])) {
@@ -274,16 +308,21 @@ if (isset($_GET['act'])) {
             break;
             /*Thong ke */
         case 'dstk':
+            
             $dsthongke = thongke_sp_danhmuc();
+            $tien=load_tien_ngay();
             include "thongke/thongke.php";
             break;
         case 'bieudo':
             // $tien=load_tien_ngay();
-            $dsthongke = thongke_sp_danhmuc();
+            $dsthongke = thongke_sp_danhmuc();         
             include "thongke/bieudo.php";
             break;
             /*Blog */
-
+        case 'bieudo2':
+             $tien=load_tien_ngay();
+        include "thongke/chart1.php";
+         break;
         case 'addblog':
             if (isset($_POST['them']) && $_POST['them']) {
                 $id = $_SESSION['taikhoan']['id_user'];

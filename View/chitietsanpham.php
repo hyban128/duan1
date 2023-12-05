@@ -67,10 +67,13 @@ if (isset($spbt_sp)) {
                                         <select style="width: 50%; display: inline-block;" name="size" id="idsize" class="form-select">
                                             <?php foreach ($spbt_size as $s) : ?>
                                                 <option value="<?php echo $s['id_size'] ?>"><?php echo $s['size'] ?></option>
+
                                             <?php endforeach ?>
 
                                         </select>
+                                       
                                     </div>
+                                   
                                 </div>
 
                                 <div class="quantity-content">
@@ -80,11 +83,17 @@ if (isset($spbt_sp)) {
                                   
                                     <div class="right-content">
                                         <div class="quantity buttons_added">
-                                            <input style="text-align: center;" type="number" value="1" id="quantity" name="soluong" min="1" max="5" >
+                                            <input style="text-align: center;width: 100px;" type="number" value="1" id="quantity" name="soluong" min="1"  >
                                         </div>
                                     </div>
+                                 
                                 </div>
-
+                                <p><?php if(isset($_COOKIE['tbsl'])){
+                                        $tb_sl=$_COOKIE['tbsl'];
+                                        echo $tb_sl;
+                                    }else{
+                                        echo $tb_sl="";
+                                    }?></p>
                                 <input type="hidden" name="price" value="<?php echo $price - (($price * $discount) / 100) ?>">
 
 
@@ -123,9 +132,20 @@ if (isset($spbt_sp)) {
                                             <fieldset>
 
                                     </div>
+                                     
 
-
-                                    <?php if (isset($err['noidung'])) : ?>
+                                    <?php 
+                                    if(isset($_COOKIE['oke'])){
+                                        $camon=$_COOKIE['oke'];
+                                        echo $camon;
+                                    }
+                                    // if(isset( $_SESSION['camon'])){
+                                    //     echo  $_SESSION['camon'];
+                                    // }else{
+                                    //     setcookie("oke",$camon,time()-5);
+                                    //       echo  $_SESSION['camon']="";
+                                    // }
+                                    if (isset($err['noidung'])) : ?>
                                         <span style="color: red;"><?php echo $err['noidung'] ?></span>
                                     <?php endif ?>
 
@@ -141,13 +161,7 @@ if (isset($spbt_sp)) {
             </div>
             <div class="input-comment">
                     <div class="search">
-                        <?php 
-                        if(isset($binhluan)){ ?>
-
-                       <?php }else{ ?>
-
-                       <?php }
-                        ?>
+                              
                         <div class="" style="margin-top: 0;">
                         
                             <?php foreach ($binhluan as $bl) : ?>
@@ -225,7 +239,7 @@ if (isset($spbt_sp)) {
         </div>
     </div>
 </section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                <script >
                 $(document).ready(function(){
                   $('#idcolor').change(function(){
@@ -238,5 +252,5 @@ if (isset($spbt_sp)) {
                  });
                 });
                 
-               </script>
+               </script> -->
 

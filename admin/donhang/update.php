@@ -87,15 +87,15 @@ include("boxtrai.php");
       <form action="index.php?act=updatedh" method="post" >
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Khách hàng</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['name_user']?>">
+            <input type="text" name="user" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $onebill['name_user']?>">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Địa chỉ</label>
-            <input type="text" name="address" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['address']?>">
+            <input type="text" name="address" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['address']?>" disabled placeholder="Auto number">
           </div>     
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Phone</label>
-            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['phone']?>">
+            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" value="<?php echo $onebill['phone']?>" disabled placeholder="Auto number">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1"  >Trạng thái</label> <br>

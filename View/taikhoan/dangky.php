@@ -12,13 +12,21 @@
                 <input type="text" name="user" placeholder="Tên khách hàng" required>
                 <input type="password" name="pass" placeholder="Mật khẩu" required>
                 <input type="password" name="passlai" placeholder="Nhập lại mật khẩu" required>
+                
 
                 <input type="text" name="address" placeholder="Địa chỉ(không bắt buộc)" >
-                
+                <span style="color: red;"> <?php
+             if(isset($_COOKIE['dangky'])){
+                echo $_COOKIE['dangky'];
+             }else{
+                echo $_COOKIE['dangky']="";
+             }
+            ?></span>
                 <!-- <input type="password" name="passlai" placeholder="Nhập lại mật khẩu" required> -->
                 <input type="submit" value="ĐĂNG KÝ" name="dangky">
                 
             </form>
+           
         </div>
          
     </div>

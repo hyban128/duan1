@@ -66,27 +66,25 @@
            
       <div class="card-body">
       <div style="text-align: center;" class="mb-3">
-      <img style="border-radius: 50%; width: 150px;" src="upload/<?php echo !isset($avata)||empty($avata)?'anh (2).jpg':$avata?>" alt=""> <br>
-          <input  style="    margin-top: 30px;width: 130px; padding: 5px 8px;background-color: #ccc;" type="text" name="avata" value="<?php echo $user?>"  >
-  
+      <img style="border-radius: 50%; width: 150px;" src="upload/<?php echo !isset($avata)||empty($avata)?'anh (2).jpg':$avata?>" alt=""> <br>  
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Tên tài khoản</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1" value="<?php echo $user?>">
+            <input type="text" name="user" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $user?>">
           </div>
          
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Email</label>
-            <input type="text" name="email" class="form-control" id="exampleInputPassword1" value="<?php echo $email?>">
+            <input type="text" name="email" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $email?>">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Address</label>
-            <input type="text" name="address" class="form-control" id="exampleInputPassword1" value="<?php echo $address?>">
+            <input type="text" name="address" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $address?>">
           </div>
          
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Phone</label>
-            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" value="<?php echo $phone?>">
+            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $phone?>">
           </div>
     
       

@@ -1,3 +1,4 @@
+
 <div class="khung">
     <div class="login" id="login">
         
@@ -12,6 +13,7 @@
                 <input type="password" name="pass" placeholder="Password" required>
                 <span style="color: red; font-size: 15px;">
                     <?php
+                    
                     if (isset($thongbao) && $thongbao != "") {
                         echo $thongbao;
                     } else if (isset($err['err'])) {

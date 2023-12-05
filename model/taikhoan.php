@@ -31,11 +31,18 @@ function insert_dangky($email,$user,$pass){
   
   }
   function check_user($email,$pass){
-    $sql="SELECT * from taikhoan where email='$email' and pass='$pass'";
+    $sql="SELECT * from taikhoan where email='$email' and pass='$pass' and trangthai=0";
     $sp=pdo_query_one($sql);
     return $sp;
  }
-
+function khoatk($id){
+  $sql="UPDATE taikhoan SET trangthai=1 WHERE id_user='$id'";
+    pdo_execute($sql);
+}
+function motk($id){
+  $sql="UPDATE taikhoan SET trangthai=0 WHERE id_user='$id'";
+    pdo_execute($sql);
+}
  function update_tkView($id,$user,$email,$image,$diachi,$phone){
   $sql="UPDATE taikhoan SET user='$user',avata='$image',email='$email',address='$diachi',phone='$phone' WHERE id_user='$id'";
     pdo_execute($sql);
