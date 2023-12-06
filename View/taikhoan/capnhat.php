@@ -73,7 +73,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Tên tài khoản</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1" value="<?php echo $user?>">
+            <input type="text" name="user" class="form-control" id="exampleInputPassword1" disabled placeholder="auto number" value="<?php echo $user?>">
           </div>
          
           <div class="mb-3">

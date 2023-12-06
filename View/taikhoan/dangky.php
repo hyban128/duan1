@@ -18,10 +18,20 @@
                 <span style="color: red;"> <?php
              if(isset($_COOKIE['dangky'])){
                 echo $_COOKIE['dangky'];
+             }else if(isset($err['pass'])){
+                echo $err['pass'];
+             }else if(isset($err['email'])){
+                echo $err['email'];
+             }else if(isset($err['passlai'])){
+                echo $err['passlai'];
+
+             
              }else{
                 echo $_COOKIE['dangky']="";
+
              }
             ?></span>
+            
                 <!-- <input type="password" name="passlai" placeholder="Nhập lại mật khẩu" required> -->
                 <input type="submit" value="ĐĂNG KÝ" name="dangky">
                 

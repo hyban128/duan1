@@ -35,6 +35,11 @@ function insert_dangky($email,$user,$pass){
     $sp=pdo_query_one($sql);
     return $sp;
  }
+ function check_dangky($email){
+  $sql="SELECT * FROM taikhoan where email='$email'";
+  $sp=pdo_query_one($sql);
+  return $sp;
+ }
 function khoatk($id){
   $sql="UPDATE taikhoan SET trangthai=1 WHERE id_user='$id'";
     pdo_execute($sql);

@@ -44,11 +44,11 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $iduser = $_SESSION['taikhoan']['id_user'];
                 $noidung = $_POST['noidung'];
                 $date = date('Y-m-d');
-                $camon="Cảm ơn ý kiến phản hồi của bạn";
+                $camon = "Cảm ơn ý kiến phản hồi của bạn";
                 if (empty($noidung)) {
                     $err['noidung'] = "Bạn chưa nhập gì";
                 } else {
-                    setcookie("oke",$camon,time()+5);
+                    setcookie("oke", $camon, time() + 5);
                     // $_SESSION['camon']=   setcookie("oke",$camon,time()+5);
                     insert_binhluan($_POST['idpro'], $_POST['noidung'], $iduser, $date);
                 }
@@ -71,7 +71,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             } else {
                 include "View/home.php";
             }
-            $bl_dd= loadbl_daduyet();
+            $bl_dd = loadbl_daduyet();
 
             include "View/chitietsanpham.php";
             break;
@@ -80,44 +80,50 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
 
         case 'dangky':
-            
-                if (isset($_POST['dangky']) && $_POST['dangky']) {
-                    $email = $_POST['email'];
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    $nhaplai=$_POST['passlai'];
-                    $dangky="Mật khẩu không trùng khớp";
-                    if(($pass==$nhaplai)){
-                    $dangky = insert_dangky($email, $user, $pass);
-                    header("location:index.php?act=dangnhap");               
-                  }else{
-                header("location:index.php?act=dangky");
-               setcookie("dangky",$dangky,time()+5);
 
+            if (isset($_POST['dangky']) && $_POST['dangky']) {
+                $emailnew = $_POST['email'];
+                $user = $_POST['user'];
+                $passnew = $_POST['pass'];
+                $nhaplai = $_POST['passlai'];
+                $uppercase = preg_match('@[A-Z]@', $passnew);
+                $number = preg_match('@[0-9]@', $passnew);
+                $err = [];
+                $checkuser = check_dangky($emailnew);
+                if (!$uppercase || !$number) {
+                    $err['pass'] = "Mật khẩu ít nhất một chữ hoa và một số";
+                }
+                if ($emailnew == $checkuser['email']) {
+                    $err['email'] = "Email đã tồn tại";
+                }
+                if ($passnew != $nhaplai) {
+                    $err['passlai'] = "Mật khẩu không trùng khớp";
+                }
+                if (!$err) {
+                    $dangky = insert_dangky($emailnew, $user, $passnew);
+                    include "View/taikhoan/dangnhap.php";
+                }
             }
-        }
-           
-
             include "View/taikhoan/dangky.php";
             break;
         case 'dangnhap':
-            
+
             if (isset($_POST['dangnhap']) && $_POST['dangnhap']) {
                 $email = $_POST['email'];
                 $pass = $_POST['pass'];
                 $err = [];
                 $checkuser = check_user($email, $pass);
-                $taikhoan = loadAll_taikhoan();              
-                    if (is_array($checkuser)) {
-                        $_SESSION['taikhoan'] = $checkuser;
-                        header("location:index.php?act=trangchu");
-                    } else if (empty($email) && empty($pass)) {
-                        $err['err'] = "Vui lòng nhập thông tin";
-                    } else {
-                        $thongbao = "Sai thông tin đăng nhập hoặc tài khoản đã bị khóa";
-                    }
+                $taikhoan = loadAll_taikhoan();
+                if (is_array($checkuser)) {
+                    $_SESSION['taikhoan'] = $checkuser;
+                    header("location:index.php?act=trangchu");
+                } else if (empty($email) && empty($pass)) {
+                    $err['err'] = "Vui lòng nhập thông tin";
+                } else {
+                    $thongbao = "Sai thông tin đăng nhập hoặc tài khoản đã bị khóa";
+                }
             }
-      
+
             include "View/taikhoan/dangnhap.php";
 
             break;
@@ -171,7 +177,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     unset($_SESSION['taikhoan']);
                     header("location:index.php?act=dangnhap");
                 } else {
-                    $thongbao = "Mật khẩu không trúng";
+                    $thongbao = "Mật khẩu không trùng";
                 }
             }
             // update_pass();
@@ -283,39 +289,43 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $soluong = $_POST['soluong'];
                 $color = $_POST['color'];
                 $size = $_POST['size'];
-                $sl = soluong($id,$color,$size);
+                $sl = soluong($id, $color, $size);
+                if (isset($sl['soluong'])) {
+                    if ($sl['soluong'] >= $_POST['soluong']) {
+                        $i = 0;
+                        $fg = 0;
+                        $tien = $price * $soluong;
+                        foreach ($_SESSION['cart'] as $cart) {
+                            if ($cart[1] == $name && $cart[5] == $color && $cart[6] == $size) {
+                                $slnew = $soluong + $cart[4];
+                                $_SESSION['cart'][$i][4] = $slnew;
+                                $fg = 1;
+                                break;
+                            }
 
-                if ($sl['soluong'] >= $_POST['soluong']) {
-                    $i = 0;
-                    $fg = 0;
-                    $tien = $price * $soluong;
-                    foreach ($_SESSION['cart'] as $cart) {
-                        if ($cart[1] == $name && $cart[5] == $color && $cart[6] == $size) {
-                            $slnew = $soluong + $cart[4];
-                            $_SESSION['cart'][$i][4] = $slnew;
-                            $fg = 1;
-                            break;
+                            $i++;
                         }
+                        if ($fg == 0) {
 
-                        $i++;
-                    }
-                    if ($fg == 0) {
-                        $spadd = [$id, $name, $img, $price, $soluong, $color, $size, $tien];/*vi tri mang 0123456 */
-                        array_push($_SESSION['cart'], $spadd);/*chèn một hoặc nhiều phần tử vào cuối mảng(đẩy mảng con vào cha)*/
+                            $spadd = [$id, $name, $img, $price, $soluong, $color, $size, $tien];/*vi tri mang 0123456 */
+                            array_push($_SESSION['cart'], $spadd);/*chèn một hoặc nhiều phần tử vào cuối mảng(đẩy mảng con vào cha)*/
+                        }
+                    } else {
+                        header("location:index.php?act=chitietsp&idsp=$id");
+                        $tb_soluong = "Số lượng trong kho còn:" . $sl['soluong'];
+                        setcookie("tbsl", $tb_soluong, time() + 5);
                     }
                 } else {
                     header("location:index.php?act=chitietsp&idsp=$id");
-                    $tb_soluong="Số lượng trong kho còn:".$sl['soluong'];
-                    setcookie("tbsl",$tb_soluong,time()+5);
-
                 }
             }
+
             if (isset($_POST['btn-sb'])) {
                 $i = 0;
                 $id = $_POST['idsp'];
-                $color=$_POST['idcolor'];
-                $size=$_POST['idsize'];
-                $sl = soluong($id,$color,$size);
+                $color = $_POST['idcolor'];
+                $size = $_POST['idsize'];
+                $sl = soluong($id, $color, $size);
                 if ($sl['soluong'] >= $_POST['slcn']) {
                     foreach ($_SESSION['cart'] as $cart) {
                         if (isset($_POST['idsp']) && isset($_POST['idcolor']) && isset($_POST['idsize'])) {
@@ -325,7 +335,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                         }
                         $i++;
                     }
-                } 
+                }
             }
 
 
