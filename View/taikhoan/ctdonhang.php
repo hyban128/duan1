@@ -77,7 +77,8 @@
       <th scope="col">Color</th>
       <th scope="col">Size</th>
       <th scope="col">Tiền</th>
-      <th scope="col">Chức năng</th>
+      <th scope="col">             <a href="index.php?act=mycart"><i class="fa fa-sign-out" style="font-size:24px;text-align: center;"></i></a>
+</th>
     </tr>
   </thead>
   <tbody>
@@ -94,8 +95,7 @@
               <td><?php echo $ct['color']==3?'Trắng':'Đen'?> </td>
               <td> <?php echo $ct['size']==3?'M':'S'?></td>
               <td> <?php echo $ct['thanhtien']?></td>
-              
-              <td style="padding: 0 25px;"><a href="index.php?act=mycart"><i class="fa fa-sign-out" style="font-size:24px;text-align: center;"></i></a></td>
+              <td></td>
           </tr>
           <?php endforeach ?>
            <?php }?>

@@ -87,7 +87,7 @@
               $count_sp=loadall_cart_count($bill['id_bill']);
               ?>
                <tr>
-              <td><?php echo $bill['id_bill']?></td>
+              <td>PTAH <?php echo $bill['id_bill']?></td>
               <td><?php  echo date("d/m/Y", strtotime($bill['ngaydat']))?></td>
               <td><?php echo $count_sp?> </td>
               <td> <?php echo $bill['tongtien']?></td>

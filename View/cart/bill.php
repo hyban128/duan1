@@ -80,7 +80,7 @@ if(empty($_SESSION['cart'])){
             </div>
         </div>
        <section class="bill">
-            <div class="all-title-pay">
+            <div class="all-title-pay" style="margin-left: 10px;width: 82%;">
                 <form action="index.php?act=camon" method="post">
                     <h1>Thông tin đặt hàng</h1>
                     <?php 
@@ -97,19 +97,19 @@ if(empty($_SESSION['cart'])){
                          }
                     ?>
                     <div class="input-box">
-                        <input type="text" name="name" placeholder="Người Đặt Hàng" required value="<?php echo $name?>">
+                        <input style="width: 97%;" type="text" name="name" placeholder="Người Đặt Hàng" required value="<?php echo $name?>">
                         <ion-icon name="person-circle-outline"></ion-icon>
                     </div>
                     <div class="input-box">
-                        <input type="text" name="address" placeholder="Địa chỉ" required  value="<?php echo $address?>">
+                        <input style="width: 97%;" type="text" name="address" placeholder="Địa chỉ" required  value="<?php echo $address?>">
                         <ion-icon name="location-outline"></ion-icon>
                     </div>
                     <div class="input-box">
-                        <input type="email" name="email" placeholder="Email" required  value="<?php echo $email?>">
+                        <input style="width: 97%;" type="email" name="email" placeholder="Email" required  value="<?php echo $email?>">
                         <ion-icon name="location-outline"></ion-icon>
                     </div>
                     <div class="input-box">
-                        <input type="number" min="0" name="phone" placeholder="Số Điện Thoại" required  value="<?php echo $phone?>">
+                        <input style="width: 97%;" type="number" min="0" name="phone" placeholder="Số Điện Thoại" required  value="<?php echo $phone?>">
                         <ion-icon name="call-outline"></ion-icon>
                     </div>
                     <div class="tt" style="margin-bottom: 20px;">
@@ -123,13 +123,38 @@ if(empty($_SESSION['cart'])){
                         </div>
                         <div class="check">
                             <input type="radio" name="pttt" id="checkbox2" value="2">
-                            <label for="">Thẻ Tín Dụng</label>
+                            <label for="">Thanh toán thẻ tín dụng</label>
                         </div>
 
                     </div>
-                    <input onclick="return confirm('Bạn chắc chắn đặt hàng!!!')" style="background: red;padding: 10px 0;padding-left: 45%;padding-right: 45%;color: #fff;border-radius: 25px;" type="submit" value="ĐẶT HÀNG" name="dathang">
+                    <input  onclick="return confirm('Bạn chắc chắn đặt hàng!!!')" style="background: red;padding: 10px 0;padding-left: 45%;padding-right: 45%;color: #fff;border-radius: 25px;margin-top: 50px;" type="submit" value="ĐẶT HÀNG" name="dathang">
                     <!-- <a href="index.php?act=camon" style="background: red;padding: 10px 0;padding-left: 45%;padding-right: 45%;color: #fff;">ĐẶT HÀNG</a> -->
                 </form>
+                <div class="check" id="div2" style="position: absolute; bottom: -220px;margin-left: 50px;display: none;">
+                          <form method="POST" action="View/cart/thanhtoan.php" target="_blank" enctype="application/x-www-form-urlencoded">
+                            <input type="hidden"  id="checkbox2" value="<?php echo $tong?>"  name="tongtien">
+                            <button type="submit"><img style="width: 40px;" src="upload/momo.png" alt=""></button>
+                            </form>
+                        </div>
             </div>
         </section>
-        
+ 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("input[value='2']").click(function(){
+            $("#div2").show();
+        })
+        $("input[value='1']").click(function(){
+            $("#div2").hide();
+        })
+    })
+</script>
+
+
+  <!-- <p><input type="radio" name="abc" value="hien" checked> Hiện</p>
+  <p><input type="radio" name="abc" value="an"> Ẩn</p>
+  <div style="background-color:red"></div>
+  <div style="background-color:green" id="div2"></div>
+  <div style="background-color:blue"></div> -->
+       

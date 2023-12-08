@@ -115,7 +115,7 @@ include("boxtrai.php");
    ?>
 
     <tr align="center">
-      <td><?php echo $gh['id_bill']?></td>
+      <td>DH<?php echo $gh['id_bill']?></td>
     
       <td><?php echo $gh['name_user']?></td>
       <td><?php echo $gh['address']?></td>

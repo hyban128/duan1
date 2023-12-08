@@ -42,9 +42,9 @@ function loadall_bill_tk($id)
   $listbill = pdo_query($sql);
   return $listbill;
 }
-function update_bill($id, $khachhang, $diachi, $dienthoai, $trangthai)
+function update_bill($id, $trangthai)
 {
-  $sql = " UPDATE bill SET name_user='$khachhang',`address`='$diachi',phone='$dienthoai',trangthai='$trangthai' WHERE id_bill='$id'";
+  $sql = " UPDATE bill SET trangthai='$trangthai' WHERE id_bill='$id'";
   pdo_execute($sql);
 }
 

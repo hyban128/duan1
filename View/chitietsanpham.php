@@ -94,6 +94,13 @@ if (isset($spbt_sp)) {
                                     }else{
                                         echo $tb_sl="";
                                     }?></p>
+
+                                <p><?php if(isset($_COOKIE['xinloi'])){
+                                     $xl=$_COOKIE['xinloi'];
+                                     echo $xl;   
+                                    }else{
+                                        echo $xl="";
+                                    }?></p>
                                 <input type="hidden" name="price" value="<?php echo $price - (($price * $discount) / 100) ?>">
 
 
@@ -139,6 +146,7 @@ if (isset($spbt_sp)) {
                                         $camon=$_COOKIE['oke'];
                                         echo $camon;
                                     }
+                                    
                                     // if(isset( $_SESSION['camon'])){
                                     //     echo  $_SESSION['camon'];
                                     // }else{
@@ -148,7 +156,7 @@ if (isset($spbt_sp)) {
                                     if (isset($err['noidung'])) : ?>
                                         <span style="color: red;"><?php echo $err['noidung'] ?></span>
                                     <?php endif ?>
-
+                                    
                                 </form>
                             </div>
                         <?php } else { ?>

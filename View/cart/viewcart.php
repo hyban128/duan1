@@ -33,13 +33,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                if(isset($_SESSION['cart'])){
-                                    extract($_SESSION['cart']);
-                                    print_r($_SESSION['cart']);
-                                }else{
-                                    echo "no";
-                                }
+                                 <?php
+                             
                                 $tong=0;
                                 $i=0; /*Xoa theo vi tri */
                                 foreach ($_SESSION['cart'] as $cart){

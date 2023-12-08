@@ -79,12 +79,12 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Address</label>
-            <input type="text" name="address" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $address?>">
+            <input type="text" name="address" class="form-control" id="exampleInputPassword1" disabled placeholder="" value="<?php echo $address?>">
           </div>
          
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Phone</label>
-            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $phone?>">
+            <input type="text" name="phone" class="form-control" id="exampleInputPassword1" disabled placeholder="" value="<?php echo $phone?>">
           </div>
     
       

@@ -396,13 +396,10 @@ if (isset($_GET['act'])) {
             break;
         case 'updatedh':
             if (isset($_POST['capnhat']) && $_POST['capnhat']) {
-                $khachhang = $_POST['user'];
-
-                $diachi = $_POST['address'];
-                $dienthoai = $_POST['phone'];
+              
                 $trangthai = $_POST['trangthai'];
                 $id = $_POST['id'];
-                update_bill($id, $khachhang, $diachi, $dienthoai, $trangthai);
+                update_bill($id, $trangthai);
                 header("location:index.php?act=dsgh");
             }
             $listbill = loadall_bill(0);

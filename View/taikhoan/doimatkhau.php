@@ -71,8 +71,8 @@
       <div class="card-body">
       <form action="index.php?act=doimk" method="post" enctype="multipart/form-data">
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label" disabled placeholder="Auto number">Tên tài khoản</label>
-            <input type="text" name="user" class="form-control" id="exampleInputPassword1" value="<?php echo $user?>">
+            <label for="exampleInputPassword1" class="form-label" >Tên tài khoản</label>
+            <input type="text" name="user" class="form-control" id="exampleInputPassword1" disabled placeholder="Auto number" value="<?php echo $user?>">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mật khẩu cũ</label>

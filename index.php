@@ -290,6 +290,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $color = $_POST['color'];
                 $size = $_POST['size'];
                 $sl = soluong($id, $color, $size);
+                $xinloi="Xin lỗi! Vui lòng mua sản phẩm khác";
                 if (isset($sl['soluong'])) {
                     if ($sl['soluong'] >= $_POST['soluong']) {
                         $i = 0;
@@ -316,6 +317,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                         setcookie("tbsl", $tb_soluong, time() + 5);
                     }
                 } else {
+                    setcookie('xinloi',$xinloi,time()+5);
                     header("location:index.php?act=chitietsp&idsp=$id");
                 }
             }
@@ -352,6 +354,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             header("location:index.php?act=viewcart");
             break;
         case 'bill':
+          
             if (isset($_SESSION['taikhoan'])) {
                 include "View/cart/bill.php";
             } else {
@@ -359,8 +362,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 header("location:index.php?act=viewcart");
             }
             break;
-
-
+     
+        
         case 'camon':
             if (isset($_POST['dathang']) && $_POST['dathang']) {
                 if (isset($_SESSION['taikhoan'])) {
@@ -387,8 +390,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             $listbill = loadone_bill($idbill);
             $billchitiet = loadall_cart($idbill);
-
             include "View/cart/camon.php";
+            
             break;
             /*Don hang boxright */
         case 'mycart':
@@ -415,6 +418,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             include "View/taikhoan/donhang.php";
             break;
+            
         default:
             include "View/home.php";
             break;
