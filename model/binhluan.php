@@ -57,7 +57,7 @@ function loadbl_daduyet(){
 function loadbl_chuaduyet(){
     $sql="SELECT binhluan.id_bl,binhluan.ngaybl,binhluan.noidung,taikhoan.user,sanpham.name,binhluan.check_bl from binhluan 
     inner join taikhoan on binhluan.id_user=taikhoan.id_user
-    inner join sanpham on binhluan.id_sp =sanpham.id_pro WHERE binhluan.check_bl=0 order by sanpham.name desc";
+    inner join sanpham on binhluan.id_sp =sanpham.id_pro WHERE binhluan.check_bl=0 order by binhluan.ngaybl desc";
     return pdo_query($sql);
 }
 function duyetbl($id){

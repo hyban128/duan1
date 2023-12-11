@@ -1,7 +1,24 @@
 <?php
 header('Content-type: text/html; charset=utf-8');
+function execPostRequest($url, $data)
 
-include "help.php";
+{
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data))
+    );
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+    //execute post
+    $result = curl_exec($ch);
+    //close connection
+    curl_close($ch);
+    return $result;
+}
 
 $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
@@ -12,8 +29,9 @@ $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
 $amount = $_POST['tongtien'];
 $orderId = time() ."";
-$redirectUrl = "http://localhost:88/duan1/index.php?act=bill";
-$ipnUrl = "http://localhost:88/duan1/index.php?act=bill";
+ $redirectUrl = "http://localhost:88/duan1/index.php?act=momo";
+$ipnUrl = "http://localhost:88/duan1/index.php?act=momo";
+
 $extraData = "";
     $requestId = time() . "";
     $requestType = "payWithATM";

@@ -31,6 +31,7 @@ if(empty($_SESSION['cart'])){
                                     $i=0;
                                     foreach($_SESSION['cart'] as $cart){
                                         $hinh="upload/".$cart[2];
+                                        
                                         $tongtien=$cart[3]*$cart[4];
                                         $tong+=$tongtien;
                                         echo' <tr>
@@ -55,6 +56,7 @@ if(empty($_SESSION['cart'])){
                                             <p>'.($cart[5]==3?'Trắng':'Đen').'</p>
                                         </td>
                                         <td class="total-pr">
+                                        
                                             <p>'.$tongtien.'</p>
                                         </td>
 
@@ -127,7 +129,10 @@ if(empty($_SESSION['cart'])){
                         </div>
 
                     </div>
+                    <div id="div1">
                     <input  onclick="return confirm('Bạn chắc chắn đặt hàng!!!')" style="background: red;padding: 10px 0;padding-left: 45%;padding-right: 45%;color: #fff;border-radius: 25px;margin-top: 50px;" type="submit" value="ĐẶT HÀNG" name="dathang">
+                    </div>
+   
                     <!-- <a href="index.php?act=camon" style="background: red;padding: 10px 0;padding-left: 45%;padding-right: 45%;color: #fff;">ĐẶT HÀNG</a> -->
                 </form>
                 <div class="check" id="div2" style="position: absolute; bottom: -220px;margin-left: 50px;display: none;">

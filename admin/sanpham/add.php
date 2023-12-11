@@ -138,15 +138,15 @@ include("boxtrai.php");
           <input type="text" name="soluong" class="form-control" id="exampleInputPassword1">
       </div>
     </div>
-    <!-- <input type=text" name="tenloai" class="form-control" id="exampleInputPassword1"> -->
-  </div>
-  <div class="inputt" style="text-align: center; margin-bottom: 50px;">
+    <div class="inputt" style=" margin-top: 20px;">
     <input type="submit" class="btn btn-primary" name="sb" value="Thêm mới">
     <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
     <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
   </div>
-  </form>
+    <!-- <input type=text" name="tenloai" class="form-control" id="exampleInputPassword1"> -->
+  </div>
 
+  </form>
 </div>
 </div>
 </div>

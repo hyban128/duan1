@@ -10,12 +10,12 @@ function loadAll_color(){
     return $taikhoan;
 }
  function  insert_spbienthe($size,$color,$sanpham,$soluong){
-    $sql="INSERT INTO `sp_bienthe`( `id_size`, `id_color`, `id_sp`, `soluong`) VALUES ('$size','$color','$sanpham','$soluong')";
+    $sql="INSERT INTO  `sp_bienthe`( `id_size`, `id_color`, `id_sp`, `soluong`) VALUES ('$size','$color','$sanpham','$soluong')";
      $kq= pdo_execute($sql);
      return $kq;
  }
  function loadAll_spbt(){
-    $sql="SELECT sp_bienthe.id_bt as id_bt,sp_bienthe.soluong,sanpham.name as name,size.size as size,color.color as color FROM sp_bienthe JOIN size on sp_bienthe.id_size=size.id_size join color on sp_bienthe.id_color=color.id_color join sanpham on sp_bienthe.id_sp=sanpham.id_pro order by id_pro desc";
+    $sql="SELECT  sp_bienthe.id_bt as id_bt,sp_bienthe.soluong,sanpham.name as name,size.size as size,color.color as color FROM sp_bienthe JOIN size on sp_bienthe.id_size=size.id_size join color on sp_bienthe.id_color=color.id_color join sanpham on sp_bienthe.id_sp=sanpham.id_pro order by id_pro desc";
    $bt= pdo_query($sql);
    return $bt;
  }
@@ -64,8 +64,8 @@ return $bt;
     $spbt=pdo_query_one($sql);
     return $spbt;
  }
- function update_sanphambt($size,$color,$id_bt){
-    $sql="UPDATE sp_bienthe id_size SET id_size='$size',id_color='$color' where id_bt='$id_bt'";
+ function update_sanphambt($size,$color,$soluong,$id_bt){
+    $sql="UPDATE sp_bienthe id_size SET id_size='$size',id_color='$color',soluong=soluong+'$soluong' where id_bt='$id_bt'";
     pdo_execute($sql);
     header("location:".$_SERVER['HTTP_REFERER']);
  }

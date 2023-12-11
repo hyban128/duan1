@@ -110,7 +110,10 @@ include("boxtrai.php");
              <?php endforeach ?>
              </select>
           </div>
-         
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Số lượng</label>
+            <input type="text" name="soluong" class="form-control" id="exampleInputPassword1"  placeholder="<?php echo $spbt['soluong']?>"">
+          </div>
           <input type="hidden" name="id_bt" value="<?php echo $spbt['id_bt']?>">
           <input type="submit" class="btn btn-primary" name="capnhat" value="Cập nhật">
           <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">

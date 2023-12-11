@@ -71,36 +71,37 @@ if (isset($spbt_sp)) {
                                             <?php endforeach ?>
 
                                         </select>
-                                       
+
                                     </div>
-                                   
+
                                 </div>
 
                                 <div class="quantity-content">
                                     <div class="left-content">
                                         <h6 style="padding-top: 0;">Số Lượng</h6>
                                     </div>
-                                  
+
                                     <div class="right-content">
                                         <div class="quantity buttons_added">
-                                            <input style="text-align: center;width: 100px;" type="number" value="1" id="quantity" name="soluong" min="1"  >
+                                            <input style="text-align: center;width: 100px;" type="number" value="1" id="quantity" name="soluong" min="1">
                                         </div>
                                     </div>
-                                 
-                                </div>
-                                <p><?php if(isset($_COOKIE['tbsl'])){
-                                        $tb_sl=$_COOKIE['tbsl'];
-                                        echo $tb_sl;
-                                    }else{
-                                        echo $tb_sl="";
-                                    }?></p>
 
-                                <p><?php if(isset($_COOKIE['xinloi'])){
-                                     $xl=$_COOKIE['xinloi'];
-                                     echo $xl;   
-                                    }else{
-                                        echo $xl="";
-                                    }?></p>
+                                </div>
+                                <p><?php if (isset($_COOKIE['tbsl'])) {
+                                        $tb_sl = $_COOKIE['tbsl'];
+                                        echo $tb_sl;
+                                    } else {
+                                        echo $tb_sl = "";
+                                    } ?></p>
+
+                                <p><?php if (isset($_COOKIE['xinloi'])) {
+                                        $xl = $_COOKIE['xinloi'];
+                                        echo $xl;
+                                    } else {
+                                        echo $xl = "";
+                                    } ?></p>
+
                                 <input type="hidden" name="price" value="<?php echo $price - (($price * $discount) / 100) ?>">
 
 
@@ -139,14 +140,14 @@ if (isset($spbt_sp)) {
                                             <fieldset>
 
                                     </div>
-                                     
 
-                                    <?php 
-                                    if(isset($_COOKIE['oke'])){
-                                        $camon=$_COOKIE['oke'];
+
+                                    <?php
+                                    if (isset($_COOKIE['oke'])) {
+                                        $camon = $_COOKIE['oke'];
                                         echo $camon;
                                     }
-                                    
+
                                     // if(isset( $_SESSION['camon'])){
                                     //     echo  $_SESSION['camon'];
                                     // }else{
@@ -156,24 +157,25 @@ if (isset($spbt_sp)) {
                                     if (isset($err['noidung'])) : ?>
                                         <span style="color: red;"><?php echo $err['noidung'] ?></span>
                                     <?php endif ?>
-                                    
+
                                 </form>
                             </div>
                         <?php } else { ?>
                             <p style="color: red; font-size: 15px;padding-left: 20px;"> <a style="color: red;" href="index.php?act=dangnhap">Vui lòng đăng nhập</a></p>
                         <?php } ?>
                     </div>
-                    
+
                 </div>
-               
+
             </div>
-            <div class="input-comment">
+            <div class="container">
+                <div class="input-comment">
                     <div class="search">
-                              
+
                         <div class="" style="margin-top: 0;">
-                        
+
                             <?php foreach ($binhluan as $bl) : ?>
-                                <div  style=" padding: 10px 15px;border: 1px solid #ccc;width: 96%;">
+                                <div style=" padding: 10px 15px;border: 1px solid #ccc;width: 96%;">
                                     <div style="display: flex;flex-direction: row;">
                                         <img src="upload/<?php echo !isset($bl['avata']) || empty($bl['avata']) ? 'anh (2).jpg' : $bl['avata'] ?>" alt="User Avatar" class="avatar">
                                         <h6 style="line-height: 50px;"><?php echo $bl['user'] ?></h6>
@@ -181,21 +183,25 @@ if (isset($spbt_sp)) {
                                     <p><?php echo $bl['noidung'] ?></p>
                                     <p style="font-size: 10px ;opacity: 0.5;"><?php echo  date("d/m/Y", strtotime($bl['ngaybl'])) ?></p>
                                 </div>
-                        </div>
-                
+                        
+
                     <?php endforeach ?>
-                                   <?php 
-                                      if($binhluan){
-                                        if(isset($_GET['full'])){?>
-                                            <a  href="index.php?act=chitietsp&idsp=<?php echo $onesp['id_pro']?>"><img style="width: 20px;background-image: #ccc;opacity: 0.5;" src="upload/arrow-up.png" alt=""></a>
-                                          <?php }else{ ?>
-                                            <a  href="index.php?act=chitietsp&idsp=<?php echo $onesp['id_pro']?>&full"> <img style="width: 20px;background-image: #ccc;opacity: 0.5;" src="upload/down-filled-triangular-arrow.png" alt=""></a>
-                                         <?php  }
-                                      }
-                                      
-                                   ?>
                     </div>
+                    </div>
+
                 </div>
+                <?php
+                if ($binhluan) {
+                    if (isset($_GET['full'])) { ?>
+                        <a href="index.php?act=chitietsp&idsp=<?php echo $onesp['id_pro'] ?>"><img style="width: 20px;background-image: #ccc;opacity: 0.5;" src="upload/arrow-up.png" alt=""></a>
+                    <?php } else { ?>
+                        <a href="index.php?act=chitietsp&idsp=<?php echo $onesp['id_pro'] ?>&full"> <img style="width: 20px;background-image: #ccc;opacity: 0.5;" src="upload/down-filled-triangular-arrow.png" alt=""></a>
+                <?php  }
+                }
+
+                ?>
+            </div>
+
             <section class="section" id="men">
                 <div class="container">
                     <div class="row">
@@ -261,4 +267,3 @@ if (isset($spbt_sp)) {
                 });
                 
                </script> -->
-

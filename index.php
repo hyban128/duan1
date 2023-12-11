@@ -340,7 +340,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 }
             }
 
-
             include "View/cart/viewcart.php";
             break;
         case 'deletecart':
@@ -392,6 +391,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             $billchitiet = loadall_cart($idbill);
             include "View/cart/camon.php";
             
+            break;
+        case 'momo':
+            include "View/cart/momo.php";
             break;
             /*Don hang boxright */
         case 'mycart':

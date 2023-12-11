@@ -90,7 +90,7 @@ include("boxtrai.php");
       <th scope="col">Size</th>
       <th scope="col">Color</th>
       <th scope="col">Số lượng</th>
-      <th  style="padding-left: 40px;" scope="col">Chức năng</th>
+      <th  style="text-align: center;" scope="col">Chức năng</th>
     </tr>
   </thead>
   <tbody>
@@ -106,10 +106,9 @@ include("boxtrai.php");
 
 
 
-      <td style="display: flex; flex-direction: row;">
+      <td style="text-align: center;">
           
             <a href="index.php?act=suaspbt&id=<?php echo $bt['id_bt']?>"><input style="margin: 0px 10px;color: blue;" class="btn btn-primary "type="button" value="Sửa"></a> 
-            <!-- <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoahh&id=<?php echo $sp['id_pro']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a>  -->
     </td>
     </tr>
    <?php endforeach?>

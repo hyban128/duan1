@@ -298,8 +298,9 @@ if (isset($_GET['act'])) {
                 $size = $_POST['size'];
                 $color = $_POST['color'];
                 $id_bt = $_POST['id_bt'];
+                $soluong=$_POST['soluong'];
                 //    $soluong=$_POST['soluong'];
-                update_sanphambt($size, $color, $id_bt);
+                update_sanphambt($size, $color,$soluong, $id_bt);
                 header("location:index.php?act=listspbt");
             }
             $taikhoan = loadAll_taikhoan();

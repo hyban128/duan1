@@ -97,7 +97,7 @@ function get_ttdh($trangthai){ /*trang thai don hang */
 }
 function huydonhang($idbill){
       $sql="UPDATE `bill` SET `trangthai`='4' WHERE id_bill='$idbill'";
-      pdo_execute($sql);
+     return pdo_execute($sql);
 }
 function load_choxn(){
   $sql="SELECT *from bill where trangthai='0'";
