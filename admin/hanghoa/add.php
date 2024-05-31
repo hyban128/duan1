@@ -13,35 +13,60 @@ include("boxtrai.php");
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <ul class="list-group">
+          <ul class="list-group">
               <!-- <li class="list-group-item active"></li> -->
 
 
 
-              <li class="list-group-item"><a href="">Danh mục</a>
-              <ul>
-                <li><a href="index.php?act=adddm">Thêm mới</a></li>
+              <li class="list-group-item">Danh mục
+                <ul>
+                  <li><a href="index.php?act=adddm">Thêm mới</a></li>
                   <li><a href="index.php?act=listdm">Danh sách</a></li>
                 </ul>
-            </li>
+              </li>
               <li class="list-group-item">Hàng hóa
-              <ul>
+                <ul>
                   <li><a href="index.php?act=addhh">Thêm mới</a></li>
                   <li><a href="index.php?act=listhh">Danh sách</a></li>
                 </ul>
               </li>
-              <li class="list-group-item"><a href="">Sản phẩm</a></li>
+              <li class="list-group-item">Sản phẩm
+                <ul>
+                  <li><a href="index.php?act=addspbt">Thêm mới</a></li>
+                  <li><a href="index.php?act=listspbt">Danh sách</a></li>
+                </ul>
+              </li>
               <li class="list-group-item">Tài khoản
                 <ul>
                   <li><a href="index.php?act=addtk">Thêm mới</a></li>
                   <li><a href="index.php?act=listtk">Danh sách</a></li>
                 </ul>
               </li>
-              <li class="list-group-item">Bình luận</li>
-              <li class="list-group-item">Đơn hàng</li>
-              <li class="list-group-item">Thống kê</li>
+              <li class="list-group-item">Bình luận
+                <ul>
+                  <li><a href="index.php?act=dsbl">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Blog
+                <ul>
+                  <li><a href="index.php?act=addblog">Thêm mới</a></li>
+                  <li><a href="index.php?act=dsblog">Danh sách</a></li>
+                </ul>
+              </li>
+              <li class="list-group-item">Đơn hàng
+              <ul>
+                <li><a href="index.php?act=dsgh">Danh sách</a></li>
+              </ul>
+              </li>
+              
+              <li class="list-group-item">Thống kê
 
-            </ul>
+                <ul>
+                  <li><a href="index.php?act=dstk">Danh sách</a></li>
+                </ul>
+              </li>
+
+           
           </div>
         </div>
       </div>
@@ -57,7 +82,7 @@ include("boxtrai.php");
       </div>
       <div class="card-body">
         <form method="post" action="index.php?act=addhh" enctype="multipart/form-data">
-         
+
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Tên sản phẩm</label>
             <input type=text" name="tensp" class="form-control" id="exampleInputPassword1">
@@ -79,25 +104,27 @@ include("boxtrai.php");
             <textarea name="mota" id="" cols="30" rows="10" class="form-control">
 
             </textarea>
-            <div class="mb-3">
+          </div>
+          <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Danh mục sản phẩm</label>
             <select name="iddm" id="" class="form-select" aria-label="Default select example">
-                    <?php foreach($danhmuc as $dm): ?>
-                    <option value="<?php echo $dm['id_dm']?>"><?php echo $dm['name']?></option>
-                    <?php endforeach ?>
-                </select>
+              <?php foreach ($danhmuc as $dm) : ?>
+                <option value="<?php echo $dm['id_dm'] ?>"><?php echo $dm['name'] ?></option>
+              <?php endforeach ?>
+            </select>
 
 
           </div>
-            <!-- <input type=text" name="tenloai" class="form-control" id="exampleInputPassword1"> -->
-          </div>
-          <input type="submit" class="btn btn-primary" name="sb" value="Thêm mới">
-          <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
-          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </form>
-  
+          <!-- <input type=text" name="tenloai" class="form-control" id="exampleInputPassword1"> -->
       </div>
+      <div class="inputt" style="text-align: center; margin-bottom: 50px;">
+      <input type="submit" class="btn btn-primary" name="sb" value="Thêm mới">
+      <input type="reset" class="btn btn-primary" name="reset" value="Nhập lại">
+      </div>
+     
     </div>
   </div>
 </div>
-</div>
+<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+</form>
+

@@ -13,35 +13,64 @@ include("boxtrai.php");
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <ul class="list-group">
-              <!-- <li class="list-group-item active"></li> -->
+         
+          <ul class="list-group">
 
 
 
-              <li class="list-group-item"><a href="">Danh mục</a>
-              <ul>
-                <li><a href="index.php?act=adddm">Thêm mới</a></li>
-                  <li><a href="index.php?act=listdm">Danh sách</a></li>
-                </ul>
-            </li>
-              <li class="list-group-item">Hàng hóa
-              <ul>
-                  <li><a href="index.php?act=addhh">Thêm mới</a></li>
-                  <li><a href="index.php?act=listhh">Danh sách</a></li>
-                </ul>
-              </li>
-              <li class="list-group-item"><a href="">Sản phẩm</a></li>
-              <li class="list-group-item">Tài khoản
-                <ul>
-                  <li><a href="index.php?act=addtk">Thêm mới</a></li>
-                  <li><a href="index.php?act=listtk">Danh sách</a></li>
-                </ul>
-              </li>
-              <li class="list-group-item">Bình luận</li>
-              <li class="list-group-item">Đơn hàng</li>
-              <li class="list-group-item">Thống kê</li>
+<li class="list-group-item">Danh mục
+  <ul>
+    <li><a href="index.php?act=adddm">Thêm mới</a></li>
+    <li><a href="index.php?act=listdm">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Hàng hóa
+  <ul>
+    <li><a href="index.php?act=addhh">Thêm mới</a></li>
+    <li><a href="index.php?act=listhh">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Sản phẩm
+  <ul>
+    <li><a href="index.php?act=addspbt">Thêm mới</a></li>
+    <li><a href="index.php?act=listspbt">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Tài khoản
+  <ul>
+    <li><a href="index.php?act=addtk">Thêm mới</a></li>
+    <li><a href="index.php?act=listtk">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Bình luận
+  <ul>
+    <li><a href="index.php?act=dsbl">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Blog
+  <ul>
+    <li><a href="index.php?act=addblog">Thêm mới</a></li>
+    <li><a href="index.php?act=dsblog">Danh sách</a></li>
+  </ul>
+</li>
+<li class="list-group-item">Đơn hàng
+<ul>
+  <li><a href="index.php?act=dsgh">Danh sách</a></li>
+</ul>
+</li>
 
-            </ul>
+<li class="list-group-item">Thống kê
+
+  <ul>
+    <li><a href="index.php?act=dstk">Danh sách</a></li>
+  </ul>
+</li>
+
+</ul>
+
+
+  
+   
           </div>
         </div>
       </div>
@@ -55,6 +84,12 @@ include("boxtrai.php");
       <div class="card-header">
         <h4>Danh sách bình luận</h4>
       </div>
+      <ul class="locgiohang" style="display: flex;list-style: none;justify-content: center;color: #BB0;background: antiquewhite;padding: 0;">
+<li ><a  style="font-weight: 700; color: #000;" class="dropdown-item" href="index.php?act=dsbl" >Tất cả</a></li>
+<li style="padding: 0px 20px;"><a class="dropdown-item" href="index.php?act=dsbl_daduyet">Đã duyệt</a></li>
+<li style="padding: 0px 5px;"><a class="dropdown-item" href="index.php?act=dsbl_chuaduyet">Chưa duyệt</a></li>
+</ul>
+    
       <div class="card-body">
       <table class="table">
   <thead class="table-light">
@@ -69,13 +104,13 @@ include("boxtrai.php");
   </thead>
   <tbody>
     <?php
+    
    foreach($binhluan as $bl):?>
     <tr>
       <td><?php echo $bl['idpro']?></td>
     
       <td><?php echo $bl['tensp']?></td>
       <td><?php echo date("d/m/Y", strtotime($bl['ngaybl']))?></td>
-
       <td style="display: flex; flex-direction: row;">
             <!-- <a onclick="return confirm('Bạn có muốn xóa không?')" href="index.php?act=xoabl&id=<?php echo $bl['idpro']?>"><input style="color: red;" class="btn btn-warning "type="button" value="Xóa"></a>  -->
             <a style="text-decoration: none; cursor: pointer;" href="index.php?act=chitietbl&idpro=<?php echo $bl['idpro']?>">Xem bình luận</a>

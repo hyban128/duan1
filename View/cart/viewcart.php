@@ -17,111 +17,114 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-main table-responsive">
-                        <table class="table">
+                        <table class="table" >
                             <thead>
                                 <tr>
                                     <th>Ảnh</th>
                                     <th>Tên Sản Phẩm</th>
-                                    <th>Giá Tiền Sản Ph</th>
-                                    <th>Số Lượng Sản Phẩm</th>
+                                    <th>Giá Tiền</th>
+                                    <th>Số Lượng </th>
+                                    <th>Size</th>
+                                    <th>Color</th>
                                     <th>Tổng Tiền</th>
-                                    <th>Xóa</th>
+                                    <th>Hành động</th>
+                                   
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                 <?php
+                             
+                                $tong=0;
+                                $i=0; /*Xoa theo vi tri */
+                                foreach ($_SESSION['cart'] as $cart){
+                                           
+                                        //    $tongtien=$cart[3]*$cart[4];
+                                            $tong+=$cart[3]*$cart[4];
+                                            
+                               echo'  <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-                                            <img class="img-fluid" src="View/img/aopolo.webp" alt="" />
+                                            <img style="width: 50px;" class="img-fluid" src="upload/'.$cart['2'].'" alt="" />
                                         </a>
                                     </td>
                                     <td class="name-pr">
-                                        <a href="single-product.html">
-                                            Áo polo 14ATP004
-                                        </a>
+                                        '.$cart[1].'
                                     </td>
                                     <td class="price-pr">
-                                        <p>450.000 <u>đ</u></p>
+                                        <p>'.$cart['3'].'</p>
                                     </td>
-                                    <td class="quantity buttons_added"><input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus"></td>
+                                    <form action="?act=addcart" method="post">
+                                    <td style="width:130px">
+                                    <input style="text-align: center;  width: 30%; background: antiquewhite;border: 1px solid #ccc;" type="number" min="1" name="slcn" value="'.$cart['4'].'">
+                                    <input type="hidden" value="'.$cart[0].'" name="idsp">
+                                    <input type="hidden" value="'.$cart[5].'" name="idcolor">
+                                    <input type="hidden" value="'.$cart[6].'" name="idsize">
+                                    </td>
+                                    <td>
+                                    <p>'.($cart['6']==3?'M':'S').'</p>
+                                  </td>
+                                  <td>
+                                    <p>'.($cart['5']==3?'Trắng':'Đen').'</p>
+                                  </td>
                                     <td class="total-pr">
-                                        <p>450.000 <u>đ</u></p>
+                                        <p>'.$cart['4']*$cart['3'].'</p>
                                     </td>
+                                  
                                     <td class="remove-pr">
-                                        <a href="#">
-                                            <i class="fas fa-times"></i>
+                                        <a href="index.php?act=deletecart&idcart='.$i.'">
+                                            <i class="fas fa-times"><input type="button"></i>
                                         </a>
+                                        <button style="border:none" name="btn-sb"><i class="fa-regular fa-pen-to-square" style="color: #5b8ce1;"></i></button>
                                     </td>
+                                    </form>
                                 </tr>
+                                <tr>';
+                                $i+=1;
+                            }
+                                       echo' <td style="background-color: #ccc;" colspan="6">Tổng tiền</td>
+                                        <td style="font-weight: 800;background-color:#ccc" class="total-pr">
+                                            <p>'.$tong.'</p>
+                                        </td>
+                                    
+                                     <td style="background-color: #ccc;">
+                                     <a  href="index.php?act=bill"><input style="background: blue; border: none;padding: 0 5px;   color: orange; font-weight: 800;" value="Tiếp tục" name="tt" type="submit"></a> 
+
+                                     </td>
+                        
+                                    </tr>';
+                                    ?>
+
                             </tbody>
                         </table>
+                        <?php
+                 if(isset($_SESSION['soluongadd'])){
+                    echo $_SESSION['soluongadd'];
+                 }else{
+                    echo $_SESSION['soluongadd']="";
+                 }
+                        ?>
+<?php
+if(!isset($_SESSION['taikhoan'])){?>
+    <span style="color: red;"><?php echo $_SESSION['thongbao'] ?></span>
+<?php }else{?>
+    <?php $_SESSION['thongbao']=""?>
+<?php }?>
+
                     </div>
+                   
+                    <?php
+                    
+     if(!$_SESSION['cart']){
+    echo'<h4 style="color:red;">Không có sản phẩm nào trong giỏ hàng quay lại để mua</h4>';
+    }
+
+
+?>
+
                 </div>
             </div>
-            <div class="row my-5">
-                <div class="col-lg-8 col-sm-12"></div>
-                <div class="col-lg-4 col-sm-12">
-                    <div class="order-box">
-                        <h3>Hóa Đơn</h3>
-                        <div class="d-flex gr-total">
-                            <h5>Tổng Tiền</h5>
-                            <div class="ml-auto h5">499.000 <u>đ</u></div>
-                        </div>
-                        <div class="button">
-                            <input class="button-submit" value="Thanh Toán" type="submit">
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <section class="section" id="men">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="section-heading">
-                                <h2>Có thể bạn cũng thích</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="men-item-carousel">
-                                <div class="owl-men-item owl-carousel">
-                                    <div class="item">
-                                        <div class="thumb">
-                                            <div class="hover-content">
-                                                <ul>
-                                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <img src="View/img/aopolo2.webp" alt="">
-                                        </div>
-                                        <div class="down-content">
-                                            <h4>Áo Polo 14ATP004</h4>
-                                            <span>450.000 <u>đ</u></span>
-                                            <ul class="stars">
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
 
         </div>
     </div>
-</div>
-</div>
 </div>
