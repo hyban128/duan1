@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="View/assets/css/owl-carousel.css">
     <link rel="stylesheet" href="View/assets/css/lightbox.css">
     <link rel="stylesheet" href="View/assets/css/pay.css">
-    <link rel="stylesheet" href="View/assets/css/login.css">
     <script src="https://kit.fontawesome.com/e6c8e2293e.js" crossorigin="anonymous"></script>
     <head>   
 <body>
